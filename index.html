@@ -1,662 +1,525 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Hasan &mdash; Portfolio</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Website Template by freehtml5.co" />
-	<meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
-	<meta name="author" content="freehtml5.co" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-	<!-- 
-	//////////////////////////////////////////////////////
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #0a192f;
+            color: #8892b0;
+            line-height: 1.6;
+        }
 
-	FREE HTML5 TEMPLATE 
-	DESIGNED & DEVELOPED by FreeHTML5.co
-		
-	Website: 		http://freehtml5.co/
-	Email: 			info@freehtml5.co
-	Twitter: 		http://twitter.com/fh5co
-	Facebook: 		https://www.facebook.com/fh5co
+        section {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-	//////////////////////////////////////////////////////
-	 -->
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin: 0;
+            max-width: none;
+            padding: 0;
+        }
 
-  	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content=""/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
-	<meta property="og:description" content=""/>
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(217deg, rgba(0,255,0,.08), rgba(0,255,0,0) 70.71%),
+                linear-gradient(127deg, rgba(0,255,255,.08), rgba(0,255,255,0) 70.71%),
+                linear-gradient(336deg, rgba(0,0,255,.08), rgba(0,0,255,0) 70.71%);
+            z-index: 0;
+        }
 
-	<link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
-	
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="css/bootstrap.css">
+        .matrix-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            z-index: 1;
+        }
 
-	<!-- Theme style  -->
-	<link rel="stylesheet" href="css/style.css">
+        .matrix-character {
+            position: absolute;
+            color: rgba(0, 255, 0, 0.1);
+            font-family: monospace;
+            font-size: 1.2rem;
+            animation: fall 8s linear infinite;
+        }
 
-	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
+        @keyframes fall {
+            0% { transform: translateY(-100%); opacity: 0; }
+            30% { opacity: 0.5; }
+            70% { opacity: 0.2; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
 
-	</head>
-	<body>
-		
-	<div class="fh5co-loader"></div>
-	
-	<div id="page">	
-	<header id="fh5co-header" class="fh5co-cover js-fullheight" role="banner" style="background-image:url(images/cover_bg_3.jpg);" data-stellar-background-ratio="0.5">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center">
-					<div class="display-t js-fullheight">
-						<div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
-							<div class="profile-thumb" style="background: url(images/user-3.jpg);"></div>
-							<h1><span>Hasan</span></h1>
-							<h3><span>Software Test Engineer</span></h3>
-							<p>
-								<ul class="fh5co-social-icons">
-									<li><a href="https://www.linkedin.com/in/hasannazeer/"><i class="icon-linkedin2"></i></a></li>
-									<li><a href="https://github.com/hasanazeerkhan"><i class="icon-github2"></i></a></li>
-									<li><a href="https://instagram.com/imnot_hasan"><i class="icon-instagram2"></i></a></li>
-									<li><a href="https://twitter.com/imnot_hasan"><i class="icon-twitter2"></i></a></li>
-								</ul>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
+        .container {
+            text-align: center;
+            max-width: 42rem;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            padding: 0 1rem;
+        }
 
-	<div id="fh5co-about" class="animate-box">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>About Me</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4">
-					<ul class="info">
-						<li><span class="first-block">Full Name:</span><span class="second-block">Mohammed Hasan</span></li>
-						<li><span class="first-block">Phone:</span><span class="second-block">+91 99420 94061</span></li>
-						<li><span class="first-block">Email:</span><span class="second-block">hasanazeerkhan@gmail.com</span></li>
-						<!-- <li><span class="first-block">Website:</span><span class="second-block">www.yoursite.com</span></li>-->
-						<li><span class="first-block">Address:</span><span class="second-block">17 East Sayakara lane, Jaffersha Street, Trichy</span></li>
-					</ul>
-				</div>
-				<div class="col-md-8">
-					<h2>Hello There!</h2>
-					<p>Experienced Senior QA Tester with a strong background in both manual and automation testing. Expert in designing and executing test cases, optimizing processes, and transitioning from manual to automated testing. Proven ability to handle over 1100 test cases per release, including regression, smoke, and user acceptance testing in Agile settings. Skilled in using JavaScript, Cypress, Selenium, and Cucumber for automation, with hands-on experience in Git, and SVN.</p>
-					<p>Recognized for contributions to innovation and effective collaboration with cross-functional teams to enhance product quality and streamline testing practices.</p>
-					<p>
-						<ul class="fh5co-social-icons">
-							<li><a href="https://www.linkedin.com/in/hasanazeerkhan/"><i class="icon-linkedin2"></i></a></li>
-							<li><a href="https://github.com/hasanazeerkhan"><i class="icon-github2"></i></a></li>
-							<li><a href="https://instagram.com/imnot_hasan"><i class="icon-instagram2"></i></a></li>
-							<li><a href="https://twitter.com/imnot_hasan"><i class="icon-twitter2"></i></a></li>
-						</ul>
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
+        h1 {
+            font-size: 2.5rem;
+            color: #e6f1ff;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
 
-	<div id="fh5co-resume" class="fh5co-bg-color">
-		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>My Resume</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 col-md-offset-0">
-					<ul class="timeline">
-						<li class="timeline-heading text-center animate-box">
-							<div><h3>Work Experience</h3></div>
-						</li>
-						<li class="timeline-inverted animate-box">
-							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Quality Engineering Analyst</h3>
-									<span class="company">Infosys - November 2024 - Present</span>
-								</div>
-								<div class="timeline-body">
-									<p>As a Quality engineering analyst, I started workin on developing framework for a application and make sure it is robust</p>
-								</div>
-							</div>
-						</li>
-						<li class="animate-box timeline-unverted">
-							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Member Technical Staff - QA</h3>
-									<span class="company">Zoho Corporation - March 2024 - October 2024</span>
-								</div>
-								<div class="timeline-body">
-									<p>As a Senior tester on the Trident team, I have contributions to our release tasks and involved in developing test cases, conducted competitor analysis to pinpoint gaps, and improved existing testing processes to enhance bug detection. Additionally, I was responsible for executing and updating our Sanity and Smoke test cases and User acceptance testing to make sure no breakage is seen when the product is reaching out to customers. My role also involved hands-on experience with accessing logs and Apptics events for released products, assessing risks before sending builds to customers.</p>
-								</div>
-							</div>
-						</li>
-						<li class="timeline-inverted animate-box">
-							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Test Engineer</h3>
-									<span class="company">Modelon Engineering - August 2020 - February 2024</span>
-								</div>
-								<div class="timeline-body">
-									<p>As a member of the manual testing team, I executed approximately 1100 test cases per release for the complex software Modelon Impact. This encompassed various testing types, including regression, smoke, sanity, exploratory, and user acceptance testing for both web and desktop applications, adhering to Agile release practices.</p>
-									<p>I played a key role in designing test cases for different features, planning and allocating resources, and refining existing manual test cases for automation. Additionally, I was instrumental in defining workflows to improve quality control and defect management using JIRA.</p>
-									<p>In transitioning to automation testing, I contributed to enhancing our help center's quality by testing various website components. This project involved writing over 50 test cases in JavaScript and Cypress, executed over two days. Building on this success, I developed over 20 test cases for Modelon Impact using Selenium, JavaScript, and Cucumber, which were integrated into Jenkins for continuous monitoring of product stability with each release.</p>
-									<p>I also gained experience with Docker, Modelica concepts, Modelon Impact, and version control systems like Git and Svn. My innovative contributions were recognized with the 'Diploma in Innovation' and 'Diploma in Engagement' </p>
-									<p>Furthermore, I was praised for my effective collaboration with cross-functional teams, ensuring seamless coordination between development and QA. I played a pivotal role in introducing new technologies and practices to the team by closely monitoring testing trends, diversifying our testing approach, and ensuring a comprehensive evaluation of our system's functionality.</p>
-								</div>
-							</div>
-						</li>
-						<!-- <li class="animate-box timeline-unverted">
-							<div class="timeline-badge"><i class="icon-suitcase"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">UI/UX Designer</h3>
-									<span class="company">Company Name - 2010 - 2012</span>
-								</div>
-								<div class="timeline-body">
-									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								</div>
-							</div>
-						</li> -->
+        h2 {
+            font-size: 2rem;
+            color: #e6f1ff;
+            margin-bottom: 2rem;
+        }
 
-						<br>
-						<li class="timeline-heading text-center animate-box">
-							<div><h3>Education</h3></div>
-						</li>
-						<li class="timeline-inverted animate-box">
-							<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Bachelor of Engineering</h3>
-									<span class="company">Care Group of Institutions - 2016 - 2020</span>
-								</div>
-								<div class="timeline-body">
-									<p>President of MESA</p>
-									<p>FInalists of Smart India Hackathon</p>
-								</div>
-							</div>
-						</li>
-						<!-- <li class="animate-box timeline-unverted">
-							<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Bachelors Degree</h3>
-									<span class="company">University Name - 2002 - 2006</span>
-								</div>
-								<div class="timeline-body">
-									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								</div>
-							</div>
-						</li>
-						<li class="timeline-inverted animate-box">
-							<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Diploma Course</h3>
-									<span class="company">College Name - 1999 - 2001</span>
-								</div>
-								<div class="timeline-body">
-									<p>Far far away, behind the word mountains, they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-								</div>
-							</div>
-						</li>
-						<li class="animate-box timeline-unverted">
-							<div class="timeline-badge"><i class="icon-graduation-cap"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h3 class="timeline-title">Graduation</h3>
-									<span class="company">College Name - 1994 - 1998</span>
-								</div>
-								<div class="timeline-body">
-									<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-								</div>
-							</div>
-						</li> -->
-			    	</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--
+        .title {
+            font-size: 1.25rem;
+            color: #8892b0;
+            margin-bottom: 2rem;
+        }
 
-	<div id="fh5co-features" class="animate-box">
-		<div class="container">
-			<div class="services-padding">
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-						<h2>My Services</h2>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4 text-center">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-paintbrush"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Web Design</h3>
-								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-							</div>
-						</div>
-					</div>
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
 
-					<div class="col-md-4 text-center">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-briefcase"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Branding</h3>
-								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-							</div>
-						</div>
+        .social-links a {
+            color: #8892b0;
+            transition: color 0.2s ease;
+        }
 
-					</div>
-					<div class="col-md-4 text-center">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-search"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Analytics</h3>
-								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-							</div>
-						</div>
-					</div>
-				</div>
+        .social-links a:hover {
+            color: #64ffda;
+        }
 
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #64ffda;
+            text-align: center;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            z-index: 2;
+        }
 
-				<div class="row">
-					<div class="col-md-4 text-center">
+        .scroll-text {
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+            color: #8892b0;
+        }
 
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-bargraph"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Web Developent</h3>
-								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-							</div>
-						</div>
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
 
-					</div>
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
 
-					<div class="col-md-4 text-center">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-genius"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Web Marketing</h3>
-								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-							</div>
-						</div>
+        .card:hover {
+            transform: translateY(-5px);
+        }
 
-					</div>
-					<div class="col-md-4 text-center">
-						<div class="feature-left">
-							<span class="icon">
-								<i class="icon-chat"></i>
-							</span>
-							<div class="feature-copy">
-								<h3>Support</h3>
-								<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
--->
+        .card h3 {
+            color: #64ffda;
+            margin-bottom: 1rem;
+        }
 
-	<div id="fh5co-skills" class="animate-box">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Skills</h2>
-				</div>
-			</div>
-			<div class="row row-pb-md">
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="90"><span><strong>
-						Manual Testing</strong>90%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="90"><span><strong>
-						Regression Testing</strong>90%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="90"><span><strong>
-						Sanity Testing</strong>90%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="90"><span><strong>
-						Smoke Testing</strong>90%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="90"><span><strong>Test Planning</strong>90%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="90"><span><strong>Test Execution</strong>90%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="50"><span><strong>JavaScript</strong>50%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="50"><span><strong>Selenium</strong>50%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="50"><span><strong>Cypress</strong>50%</span></div>
-				</div>
-				<div class="col-md-3 col-sm-6 col-xs-12 text-center">
-					<div class="chart" data-percent="70"><span><strong>Agile</strong>70%</span></div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<div class="progress-wrap">
-						<h3><span class="name-left">Test Design</span><span class="value-right">100%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-1 progress-bar-striped active" role="progressbar"
-						  aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-						  </div>
-						</div>
-					</div>
-					<div class="progress-wrap">
-						<h3><span class="name-left">ISTQB</span><span class="value-right">70%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-2 progress-bar-striped active" role="progressbar"
-						  aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
-						  </div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="progress-wrap">
-						<h3><span class="name-left">JavaScript</span><span class="value-right">50%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar-3 progress-bar-striped active" role="progressbar"
-						  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
-						  </div>
-						</div>
-					</div>
-					<div class="progress-wrap">
-						<h3><span class="name-left">Selenium</span><span class="value-right">50%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar- progress-bar-striped active" role="progressbar"
-						  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
-						  </div>
-						</div>
-					</div>
-					<div class="progress-wrap">
-						<h3><span class="name-left">Cypress</span><span class="value-right">50%</span></h3>
-						<div class="progress">
-						  <div class="progress-bar progress-bar- progress-bar-striped active" role="progressbar"
-						  aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%">
-						  </div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- 
-	<div id="fh5co-work" class="fh5co-bg-dark">
-		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Work</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="#" class="work" style="background-image: url(images/portfolio-1.jpg);">
-						<div class="desc">
-							<h3>Project Name</h3>
-							<span>Illustration</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="#" class="work" style="background-image: url(images/portfolio-2.jpg);">
-						<div class="desc">
-							<h3>Project Name</h3>
-							<span>Brading</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="#" class="work" style="background-image: url(images/portfolio-3.jpg);">
-						<div class="desc">
-							<h3>Project Name</h3>
-							<span>Illustration</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="#" class="work" style="background-image: url(images/portfolio-4.jpg);">
-						<div class="desc">
-							<h3>Project Name</h3>
-							<span>Design</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="#" class="work" style="background-image: url(images/portfolio-5.jpg);">
-						<div class="desc">
-							<h3>Project Name</h3>
-							<span>Website</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="#" class="work" style="background-image: url(images/portfolio-6.jpg);">
-						<div class="desc">
-							<h3>Project Name</h3>
-							<span>Illustration</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="#" class="work" style="background-image: url(images/portfolio-7.jpg);">
-						<div class="desc">
-							<h3>Project Name</h3>
-							<span>Brading</span>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-3 text-center col-padding animate-box">
-					<a href="#" class="work" style="background-image: url(images/portfolio-8.jpg);">
-						<div class="desc">
-							<h3>Project Name</h3>
-							<span>Illustration</span>
-						</div>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
 
-	<div id="fh5co-blog">
-		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Post on Medium</h2>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4">
-					<div class="fh5co-blog animate-box">
-						<a href="#" class="blog-bg" style="background-image: url(images/portfolio-1.jpg);"></a>
-						<div class="blog-text">
-							<span class="posted_on">Mar. 15th 2016</span>
-							<h3><a href="#">Photoshoot On The Street</a></h3>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-							<ul class="stuff">
-								<li><i class="icon-heart2"></i>249</li>
-								<li><i class="icon-eye2"></i>308</li>
-								<li><a href="#">Read More<i class="icon-arrow-right22"></i></a></li>
-							</ul>
-						</div> 
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="fh5co-blog animate-box">
-						<a href="#" class="blog-bg" style="background-image: url(images/portfolio-2.jpg);"></a>
-						<div class="blog-text">
-							<span class="posted_on">Mar. 15th 2016</span>
-							<h3><a href="#">Surfing at Philippines</a></h3>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-							<ul class="stuff">
-								<li><i class="icon-heart2"></i>249</li>
-								<li><i class="icon-eye2"></i>308</li>
-								<li><a href="#">Read More<i class="icon-arrow-right22"></i></a></li>
-							</ul>
-						</div> 
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="fh5co-blog animate-box">
-						<a href="#" class="blog-bg" style="background-image: url(images/portfolio-3.jpg);"></a>
-						<div class="blog-text">
-							<span class="posted_on">Mar. 15th 2016</span>
-							<h3><a href="#">Capture Living On Uderwater</a></h3>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-							<ul class="stuff">
-								<li><i class="icon-heart2"></i>249</li>
-								<li><i class="icon-eye2"></i>308</li>
-								<li><a href="#">Read More<i class="icon-arrow-right22"></i></a></li>
-							</ul>
-						</div> 
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<div id="fh5co-started" class="fh5co-bg-dark">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
-					<h2>Hire Me!</h2>
-					<p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
-					<p><a href="#" class="btn btn-default btn-lg">Contact Us</a></p>
-				</div>
-			</div>
-		</div>
-	</div>
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            font-size: 0.875rem;
+        }
 
-	-->
+        .tech-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
 
-	<div id="fh5co-consult">
-		<div class="video fh5co-video" style="background-image: url(images/cover_bg_1.jpg);">
-			<div class="overlay"></div>
-		</div>
-		<div class="choose animate-box">
-			<h2>Contact</h2>
-			<form action="#">
-				<div class="row form-group">
-					<div class="col-md-6">
-						<input type="text" id="fname" class="form-control" placeholder="Your firstname">
-					</div>
-				</div>
-				<div class="row form-group">
-					<div class="col-md-6">
-						<input type="text" id="lname" class="form-control" placeholder="Your lastname">
-					</div>
-				</div>
+        .timeline {
+            color: #64ffda;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
 
-				<div class="row form-group">
-					<div class="col-md-12">
-						<input type="text" id="email" class="form-control" placeholder="Your email address">
-					</div>
-				</div>
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
 
-				<div class="row form-group">
-					<div class="col-md-12">
-						<input type="text" id="subject" class="form-control" placeholder="Your subject of this message">
-					</div>
-				</div>
+        .skill-tag {
+            background: rgba(100, 255, 218, 0.1);
+            color: #64ffda;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.875rem;
+        }
 
-				<div class="row form-group">
-					<div class="col-md-12">
-						<textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Say something about us"></textarea>
-					</div>
-				</div>
-				<div class="form-group">
-					<input type="submit" value="Send Message" class="btn btn-primary">
-				</div>
+        .github-link {
+            display: inline-block;
+            color: #64ffda;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: color 0.2s ease;
+        }
 
-			</form>	
-		</div>
-	</div>
-<!--
-	<div id="map" class="fh5co-map"></div>
-	</div>
-	
-	<div id="fh5co-footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<p>&copy; 2017 Free HTML5 Template. All Rights Reserved. <br>Designed by <a href="http://freehtml5.co" target="_blank">FreeHTML5.co</a> Demo Images: <a href="http://unsplash.com" target="_blank">Unsplash</a></p>
-				</div>
-			</div>
-		</div>
-	</div>
-	-->
+        .github-link:hover {
+            color: #fff;
+        }
 
-	<div class="gototop js-top">
-		<a href="#" class="js-gotop"><i class="icon-arrow-up22"></i></a>
-	</div>
-	
-	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<!-- Stellar Parallax -->
-	<script src="js/jquery.stellar.min.js"></script>
-	<!-- Easy PieChart -->
-	<script src="js/jquery.easypiechart.min.js"></script>
-	<!-- Google Map -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
-	<script src="js/google_map.js"></script>
-	
-	<!-- Main -->
-	<script src="js/main.js"></script>
+        .coming-soon {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
 
-	</body>
-</html>
+        .coming-soon h3 {
+            color: #64ffda;
+            margin-bottom: 1rem;
+        }
 
+        @media (max-width: 768px) {
+            section {
+                padding: 2rem 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .social-links {
+                gap: 1rem;
+            }
+
+            .tech-stack {
+                gap: 0.5rem;
+            }
+
+            .tech-item {
+                padding: 0.25rem 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="matrix-bg" id="matrixBg"></div>
+        <div class="container">
+            <h1>Mohammed Hasan</h1>
+            <p class="title">Software Test Engineer</p>
+            
+            <div class="social-links">
+                <a href="https://github.com/hasanazeerkhan" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+                <a href="https://linkedin.com/in/hasanazeerkhan" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="https://twitter.com/imnot_hasan" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+                </a>
+                <a href="https://instagram.com/imnot_hasan" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-text">Scroll Down</div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="card">
+            <p>Experienced Senior QA Tester with a strong background in both manual and automation testing. Expert in designing and executing test cases, optimizing processes, and transitioning from manual to automated testing. Proven ability to handle over 1100 test cases per release, including regression, smoke, and user acceptance testing in Agile settings. Skilled in using JavaScript, Cypress, Selenium, and Cucumber for automation, with hands-on experience in Git, and SVN.
+                Recognized for contributions to innovation and effective collaboration with cross-functional teams to enhance product quality and streamline testing practices.</p>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="card">
+            <h3>Automation testing for Demo QA</h3>
+            <p>About
+                A comprehensive automation framework for testing the demoQA website using Playwright, Node.js, and the Page Object Model. This repository provides a scalable and maintainable solution for end-to-end testing of web applications, with a focus on reliability and performance.</p>
+            <div class="tech-stack">
+                <div class="tech-item" data-visible="true">
+                    <img src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium" class="tech-icon" />
+                    Selenium
+                </div>
+                <div class="tech-item" data-visible="true">
+                    <img src="img\Cypress_Logotype_White.svg" alt="Cypress" class="tech-icon" />
+                    Cypress
+                </div>
+                <div class="tech-item" data-visible="true">
+                    <img src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" class="tech-icon" />
+                    Playwright
+                </div>
+                <div class="tech-item" data-visible="true">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript" class="tech-icon" />
+                    JavaScript
+                </div>
+            </div>
+            <a href="https://github.com/hasanazeerkhan/demoQA-automation-playwright" class="github-link" target="_blank">View on GitHub →</a>
+        </div>
+
+        <div class="card">
+            <h3>Automation testing for Orang HRM</h3>
+            <p>This project aims to streamline the testing process for the OrangeHRM application, an open-source HR management system, by utilizing Cypress, a modern JavaScript testing framework. The automation covers essential functionalities such as user login and employee management.</p>
+            <div class="tech-stack">
+                <div class="tech-item" data-visible="true">
+                    <img src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium" class="tech-icon" />
+                    Selenium
+                </div>
+                <div class="tech-item" data-visible="true">
+                    <img src="img\Cypress_Logotype_White.svg" alt="Cypress" class="tech-icon" />
+                    Cypress
+                </div>
+                <div class="tech-item" data-visible="true">
+                    <img src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" class="tech-icon" />
+                    Playwright
+                </div>
+                <div class="tech-item" data-visible="true">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript" class="tech-icon" />
+                    JavaScript
+                </div>
+            </div>
+            <a href="https://github.com/hasanazeerkhan/orangehrm-automation-cypress" class="github-link" target="_blank">View on GitHub →</a>
+        </div>
+        <div class="card">
+            <h3>Selenium Javascript Cucumber</h3>
+            <p>This collection of exercises is designed to help you gain practical experience working with Selenium WebDriver, a popular tool used for automating web browser interactions.</p>
+            <div class="tech-stack">
+                <div class="tech-item" data-visible="true">
+                    <img src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium" class="tech-icon" />
+                    Selenium
+                </div>
+                <div class="tech-item" data-visible="true">
+                    <img src="img\Cypress_Logotype_White.svg" alt="Cypress" class="tech-icon" />
+                    Cypress
+                </div>
+                <div class="tech-item" data-visible="true">
+                    <img src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" class="tech-icon" />
+                    Playwright
+                </div>
+                <div class="tech-item" data-visible="true">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript" class="tech-icon" />
+                    JavaScript
+                </div>
+            </div>
+            <a href="https://github.com/hasanazeerkhan/orangehrm-automation-cypress" class="github-link" target="_blank">View on GitHub →</a>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="card">
+            <div style="display: flex; align-items: center;">
+                <img src="img\infosys-nyn-tagline-reverse-png.png" alt="JavaScript" style="width: 40px; height: auto; margin-right: 0.5rem;">
+                <h3 style="margin: 0;">Quality Engineering Analyst</h3>
+            </div>
+            <p class="timeline">November 2024 - Present</p>
+            <p>Led the development and implementation of automated testing solutions for web applications.</p>
+            <div class="skills-list">
+                <div class="tech-item" data-visible="true">
+                    <img src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" class="tech-icon" />
+                    Playwright
+                </div>
+                <div class="tech-item" data-visible="true">
+                    <img src="https://cucumber.io/img/logo.svg" alt="Cucumber" class="tech-icon" />
+                    Cucumber
+                </div>
+                <div class="tech-item" data-visible="true">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript" class="tech-icon" />
+                    JavaScript
+                </div>
+                <span class="skill-tag">Functional Testing</span>
+                <span class="skill-tag">Test planning</span>
+            </div>
+        </div>
+        <div class="card">
+            <div style="display: flex; align-items: center;">
+                <img src="img\zoho-logo-darkbg.svg" alt="JavaScript" style="width: 40px; height: auto; margin-right: 0.5rem;">
+                <h3 style="margin: 0;">Member Technical Staff - QA</h3>
+            </div>
+            <p class="timeline">March 2024 - September 2024</p>
+            <p>As a Senior tester on the Trident team, I have contributions to our release tasks and involved in developing test cases, conducted competitor analysis to pinpoint gaps, and improved existing testing processes to enhance bug detection. Additionally, I was responsible for executing and updating our Sanity and Smoke test cases and User acceptance testing to make sure no breakage is seen when the product is reaching out to customers. My role also involved hands-on experience with accessing logs and Apptics events for released products, assessing risks before sending builds to customers.</p>
+            <div class="skills-list">
+                <div class="tech-item" data-visible="true">
+                    <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/projects.svg" alt="JavaScript" class="tech-icon" />
+                    Zoho Projects
+                </div>
+                <span class="skill-tag">Functional Testing</span>
+                <span class="skill-tag">Test planning</span>
+                <span class="skill-tag">Bug management</span>
+            </div>
+        </div>
+        <div class="card">
+            <div style="display: flex; align-items: center;">
+                <img src="https://modelon.com/wp-content/uploads/2022/06/modelon-logo.svg" alt="JavaScript" style="width: 40px; height: auto; margin-right: 0.5rem;">
+                <h3 style="margin: 0;">Test Engineer</h3>
+            </div>
+            <p class="timeline">November 2024 - Present</p>
+            <p>As a member of the manual testing team, I executed approximately 1100 test cases per release for the complex software Modelon Impact. This encompassed various testing types, including regression, smoke, sanity, exploratory, and user acceptance testing for both web and desktop applications, adhering to Agile release practices.
+
+                I played a key role in designing test cases for different features, planning and allocating resources, and refining existing manual test cases for automation. Additionally, I was instrumental in defining workflows to improve quality control and defect management using JIRA.
+                
+                In transitioning to automation testing, I contributed to enhancing our help center's quality by testing various website components. This project involved writing over 50 test cases in JavaScript and Cypress, executed over two days. Building on this success, I developed over 20 test cases for Modelon Impact using Selenium, JavaScript, and Cucumber, which were integrated into Jenkins for continuous monitoring of product stability with each release.
+                
+                I also gained experience with Docker, Modelica concepts, Modelon Impact, and version control systems like Git and Svn.
+                
+                Furthermore, I was praised for my effective collaboration with cross-functional teams, ensuring seamless coordination between development and QA. I played a pivotal role in introducing new technologies and practices to the team by closely monitoring testing trends, diversifying our testing approach, and ensuring a comprehensive evaluation of our system's functionality.</p>
+            <div class="skills-list">
+                <div class="tech-item" data-visible="true">
+                    <img src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium" class="tech-icon" />
+                    Selenium
+                </div>
+                <div class="tech-item" data-visible="true">
+                    <img src="img\Cypress_Logotype_White.svg" alt="Cypress" class="tech-icon" />
+                    Cypress
+                </div>
+                <div class="tech-item" data-visible="true">
+                    <img src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" class="tech-icon" />
+                    Playwright
+                </div>
+                <div class="tech-item" data-visible="true">
+                    <img src="https://cucumber.io/img/logo.svg" alt="Cucumber" class="tech-icon" />
+                    Cucumber
+                </div>
+                <div class="tech-item" data-visible="true">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript" class="tech-icon" />
+                    JavaScript
+                </div>
+                <div class="tech-item" data-visible="true">
+                    <img src="https://modelica.org/images/ma-logos/dark/m-ball.svg" alt="JavaScript" class="tech-icon" />
+                    Modelica
+                </div>
+                <div class="tech-item" data-visible="true">
+                    <img src="img\Jira Software-icon-blue.svg" alt="JIRA" class="tech-icon" />
+                    JIRA
+                </div>
+                <div class="tech-item" data-visible="true">
+                    <img src="img\Git-Icon-White.svg" alt="GIT" class="tech-icon" />
+                    GIT
+                </div>
+                <div class="tech-item" data-visible="true">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Apache_Subversion_logo.svg/330px-Apache_Subversion_logo.svg.png" alt="SVN" class="tech-icon" />
+                    SVN
+                </div>
+                <span class="skill-tag">Functional Testing</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <div class="card">
+            <h3>ISTQB Certified Tester Foundation Level</h3>
+            <p>International Software Testing Qualifications Board</p>
+            <p class="timeline">2022</p>
+        </div>
+        <div class="card">
+            <h3>Selenium WebDriver with Java</h3>
+            <p>Udemy</p>
+            <p class="timeline">2021</p>
+            </div>
+            </section>
+
+            <section id="blogs">
+                <h2>Blogs</h2>
+                <div class="coming-soon">
+                    <h3>Coming Soon!</h3>
+                    <p>Stay tuned for insightful articles about software testing, automation, and best practices.</p>
+                </div>
+            </section>
+            </section>
+
+            <script>
+                function createMatrixBackground() {
+                    const matrixBg = document.getElementById('matrixBg');
+                    const characters = '01テストQA検証バグ修正';
+                    const columns = Math.floor(window.innerWidth / 20);
+                    
+                    for (let i = 0; i < columns; i++) {
+                        const character = document.createElement('div');
+                        character.className = 'matrix-character';
+                        character.style.left = `${i * 20}px`;
+                        character.style.animationDelay = `${Math.random() * 8}s`;
+                        character.textContent = characters[Math.floor(Math.random() * characters.length)];
+                        matrixBg.appendChild(character);
+                    }
+                }
+        
+                createMatrixBackground();
+        
+                document.querySelector('.scroll-indicator').addEventListener('click', () => {
+                    document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+                });
+        
+                // Initialize tech stack visibility
+                document.addEventListener('DOMContentLoaded', () => {
+                    const techItems = document.querySelectorAll('.tech-item');
+                    techItems.forEach(item => {
+                        const isVisible = item.getAttribute('data-visible') === 'true';
+                        item.style.display = isVisible ? 'flex' : 'none';
+                    });
+                });
+            </script>
+        </body>
+        </html>
