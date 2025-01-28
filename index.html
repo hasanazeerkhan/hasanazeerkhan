@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,6 +30,7 @@
         .hero {
             height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             position: relative;
@@ -45,10 +47,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
-                linear-gradient(217deg, rgba(0,255,0,.08), rgba(0,255,0,0) 70.71%),
-                linear-gradient(127deg, rgba(0,255,255,.08), rgba(0,255,255,0) 70.71%),
-                linear-gradient(336deg, rgba(0,0,255,.08), rgba(0,0,255,0) 70.71%);
+            background: linear-gradient(217deg, rgba(0, 255, 0, .08), rgba(0, 255, 0, 0) 70.71%), linear-gradient(127deg, rgba(0, 255, 255, .08), rgba(0, 255, 255, 0) 70.71%), linear-gradient(336deg, rgba(0, 0, 255, .08), rgba(0, 0, 255, 0) 70.71%);
             z-index: 0;
         }
 
@@ -71,10 +70,23 @@
         }
 
         @keyframes fall {
-            0% { transform: translateY(-100%); opacity: 0; }
-            30% { opacity: 0.5; }
-            70% { opacity: 0.2; }
-            100% { transform: translateY(100vh); opacity: 0; }
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            30% {
+                opacity: 0.5;
+            }
+
+            70% {
+                opacity: 0.2;
+            }
+
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
         }
 
         .container {
@@ -91,6 +103,7 @@
             color: #e6f1ff;
             margin-bottom: 0.5rem;
             font-weight: bold;
+            text-align: center;
         }
 
         h2 {
@@ -103,6 +116,7 @@
             font-size: 1.25rem;
             color: #8892b0;
             margin-bottom: 2rem;
+            text-align: center;
         }
 
         .social-links {
@@ -140,9 +154,30 @@
         }
 
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-10px);
+            }
+
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Projects Grid Layout */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            padding: 1rem;
         }
 
         .card {
@@ -151,15 +186,34 @@
             border-radius: 8px;
             margin-bottom: 1.5rem;
             transition: transform 0.3s ease;
+            height: 100%;
         }
 
         .card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(100, 255, 218, 0.1);
+            border-color: #64ffda;
         }
 
         .card h3 {
             color: #64ffda;
             margin-bottom: 1rem;
+        }
+
+        .company-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .company-logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            background: white;
+            padding: 4px;
+            border-radius: 4px;
         }
 
         .tech-stack {
@@ -218,16 +272,45 @@
             color: #fff;
         }
 
-        .coming-soon {
-            text-align: center;
-            padding: 3rem;
+        .achievement-card {
             background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
             border-radius: 8px;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+            border-left: 4px solid #64ffda;
+        }
+
+        .achievement-card h3 {
+            color: #64ffda;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(100, 255, 218, 0.1);
+            border-color: #64ffda;
         }
 
         .coming-soon h3 {
             color: #64ffda;
             margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .projects-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
@@ -243,6 +326,10 @@
                 font-size: 1.5rem;
             }
 
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+
             .social-links {
                 gap: 1rem;
             }
@@ -255,271 +342,491 @@
                 padding: 0.25rem 0.75rem;
             }
         }
+
+        .subtitle {
+            color: #8892b0;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            padding-left: 45px;
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            color: #ccd6f6;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #64ffda;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .search-input::placeholder {
+            color: #8892b0;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64ffda;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+
+        .blog-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(100, 255, 218, 0.1);
+            border-color: #64ffda;
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.05);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .blog-content {
+            padding: 20px;
+        }
+
+        .blog-category {
+            background-color: rgba(100, 255, 218, 0.1);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: #64ffda;
+            display: inline-block;
+            margin-bottom: 10px;
+            border: 1px solid #64ffda;
+        }
+
+        .blog-title {
+            font-size: 1.25rem;
+            color: #ccd6f6;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            color: #8892b0;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #8892b0;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 15px;
+        }
     </style>
 </head>
+
 <body>
     <section class="hero">
         <div class="matrix-bg" id="matrixBg"></div>
         <div class="container">
             <h1>Mohammed Hasan</h1>
             <p class="title">Software Test Engineer</p>
-            
-            <div class="social-links">
-                <a href="https://github.com/hasanazeerkhan" target="_blank" rel="noopener noreferrer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                </a>
-                <a href="https://linkedin.com/in/hasanazeerkhan" target="_blank" rel="noopener noreferrer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                </a>
-                <a href="https://twitter.com/imnot_hasan" target="_blank" rel="noopener noreferrer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
-                </a>
-                <a href="https://instagram.com/imnot_hasan" target="_blank" rel="noopener noreferrer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                </a>
-            </div>
+            <div class="social-links"> <a href="https://github.com/hasanazeerkhan" target="_blank"
+                    rel="noopener noreferrer"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                    </svg> </a> <a href="https://linkedin.com/in/hasanazeerkhan" target="_blank"
+                    rel="noopener noreferrer"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg> </a> <a href="https://twitter.com/imnot_hasan" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                        </path>
+                    </svg> </a> <a href="https://instagram.com/imnot_hasan" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg> </a> </div>
         </div>
         <div class="scroll-indicator">
-            <div class="scroll-text">Scroll Down</div>
+            <div class="scroll-text">Scroll Down</div> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+            </svg>
         </div>
     </section>
-
     <section id="about">
         <h2>About Me</h2>
         <div class="card">
-            <p>Experienced Senior QA Tester with a strong background in both manual and automation testing. Expert in designing and executing test cases, optimizing processes, and transitioning from manual to automated testing. Proven ability to handle over 1100 test cases per release, including regression, smoke, and user acceptance testing in Agile settings. Skilled in using JavaScript, Cypress, Selenium, and Cucumber for automation, with hands-on experience in Git, and SVN.
-                Recognized for contributions to innovation and effective collaboration with cross-functional teams to enhance product quality and streamline testing practices.</p>
+            <p>Experienced Senior QA Tester with a strong background in both manual and automation testing. Expert in
+                designing and executing test cases, optimizing processes, and transitioning from manual to automated
+                testing. Proven ability to handle over 1100 test cases per release, including regression, smoke, and
+                user acceptance testing in Agile settings. Skilled in using JavaScript, Cypress, Selenium, and Cucumber
+                for automation, with hands-on experience in Git, and SVN. Recognized for contributions to innovation and
+                effective collaboration with cross-functional teams to enhance product quality and streamline testing
+                practices.</p>
         </div>
     </section>
-
     <section id="projects">
         <h2>Projects</h2>
-        <div class="card">
-            <h3>Automation testing for Demo QA</h3>
-            <p>About
-                A comprehensive automation framework for testing the demoQA website using Playwright, Node.js, and the Page Object Model. This repository provides a scalable and maintainable solution for end-to-end testing of web applications, with a focus on reliability and performance.</p>
-            <div class="tech-stack">
-                <div class="tech-item" data-visible="true">
-                    <img src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium" class="tech-icon" />
-                    Selenium
-                </div>
-                <div class="tech-item" data-visible="true">
-                    <img src="img\Cypress_Logotype_White.svg" alt="Cypress" class="tech-icon" />
-                    Cypress
-                </div>
-                <div class="tech-item" data-visible="true">
-                    <img src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" class="tech-icon" />
-                    Playwright
-                </div>
-                <div class="tech-item" data-visible="true">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript" class="tech-icon" />
-                    JavaScript
-                </div>
+        <div class="projects-container">
+            <div class="card">
+                <h3>Bank Of India</h3>
+                <p>A Page Object Model framework to test the website Bank Of India. As a realtime example there are lot
+                    of dynamic elements have been handled here</p>
+                <div class="tech-stack">
+                    <div class="tech-item" data-visible="true"> <img
+                            src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" class="tech-icon" />
+                    </div>
+                    <div class="tech-item" data-visible="true"> <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                            alt="JavaScript" class="tech-icon" /> </div>
+                </div> <a href="https://github.com/hasanazeerkhan/playwright-bankOfIndia" class="github-link"
+                    target="_blank">View on GitHub →</a>
             </div>
-            <a href="https://github.com/hasanazeerkhan/demoQA-automation-playwright" class="github-link" target="_blank">View on GitHub →</a>
-        </div>
-
-        <div class="card">
-            <h3>Automation testing for Orang HRM</h3>
-            <p>This project aims to streamline the testing process for the OrangeHRM application, an open-source HR management system, by utilizing Cypress, a modern JavaScript testing framework. The automation covers essential functionalities such as user login and employee management.</p>
-            <div class="tech-stack">
-                <div class="tech-item" data-visible="true">
-                    <img src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium" class="tech-icon" />
-                    Selenium
-                </div>
-                <div class="tech-item" data-visible="true">
-                    <img src="img\Cypress_Logotype_White.svg" alt="Cypress" class="tech-icon" />
-                    Cypress
-                </div>
-                <div class="tech-item" data-visible="true">
-                    <img src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" class="tech-icon" />
-                    Playwright
-                </div>
-                <div class="tech-item" data-visible="true">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript" class="tech-icon" />
-                    JavaScript
-                </div>
+            <div class="card">
+                <h3>Demo QA</h3>
+                <p>A comprehensive automation framework for testing the demoQA website using Playwright</p>
+                <div class="tech-stack">
+                    <div class="tech-item" data-visible="true"> <img
+                            src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" class="tech-icon" />
+                    </div>
+                    <div class="tech-item" data-visible="true"> <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                            alt="JavaScript" class="tech-icon" /> </div>
+                </div> <a href="https://github.com/hasanazeerkhan/demoQA-automation-playwright" class="github-link"
+                    target="_blank">View on GitHub →</a>
             </div>
-            <a href="https://github.com/hasanazeerkhan/orangehrm-automation-cypress" class="github-link" target="_blank">View on GitHub →</a>
-        </div>
-        <div class="card">
-            <h3>Selenium Javascript Cucumber</h3>
-            <p>This collection of exercises is designed to help you gain practical experience working with Selenium WebDriver, a popular tool used for automating web browser interactions.</p>
-            <div class="tech-stack">
-                <div class="tech-item" data-visible="true">
-                    <img src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium" class="tech-icon" />
-                    Selenium
-                </div>
-                <div class="tech-item" data-visible="true">
-                    <img src="img\Cypress_Logotype_White.svg" alt="Cypress" class="tech-icon" />
-                    Cypress
-                </div>
-                <div class="tech-item" data-visible="true">
-                    <img src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" class="tech-icon" />
-                    Playwright
-                </div>
-                <div class="tech-item" data-visible="true">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript" class="tech-icon" />
-                    JavaScript
-                </div>
+            <div class="card">
+                <h3>Techlistic</h3>
+                <p>This collection of exercises is designed to help you gain practical experience working with Selenium
+                    WebDriver.</p>
+                <div class="tech-stack">
+                    <div class="tech-item" data-visible="true"> <img
+                            src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium"
+                            class="tech-icon" /> </div>
+                    <div class="tech-item" data-visible="true"> <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                            alt="JavaScript" class="tech-icon" /> </div>
+                    <div class="tech-item" data-visible="true"> <img src="https://cucumber.io/img/logo.svg"
+                            alt="Cucumber" class="tech-icon" /> </div>
+                </div> <a href="https://github.com/hasanazeerkhan/selenium-javascript-cucumber" class="github-link"
+                    target="_blank">View on GitHub →</a>
             </div>
-            <a href="https://github.com/hasanazeerkhan/orangehrm-automation-cypress" class="github-link" target="_blank">View on GitHub →</a>
+            <div class="card">
+                <h3>Facebook</h3>
+                <p>Automating login to facebook page with some mock data</p>
+                <div class="tech-stack">
+                    <div class="tech-item" data-visible="true"> <img
+                            src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium"
+                            class="tech-icon" /> </div>
+                    <div class="tech-item" data-visible="true"> <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                            alt="JavaScript" class="tech-icon" /> </div>
+                </div> <a href="https://github.com/hasanazeerkhan/facebook-automation-selenium-js" class="github-link"
+                    target="_blank">View on GitHub →</a>
+            </div>
+            <div class="card">
+                <h3>Demo QA</h3>
+                <p>A comprehensive automation framework for testing the demoQA website using Playwright</p>
+                <div class="tech-stack">
+                    <div class="tech-item" data-visible="true"> <img
+                            src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium"
+                            class="tech-icon" /> </div>
+                    <div class="tech-item" data-visible="true"> <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                            alt="JavaScript" class="tech-icon" /> </div>
+                </div> <a href="https://github.com/hasanazeerkhan/demoqa-automation-selenium-js" class="github-link"
+                    target="_blank">View on GitHub →</a>
+            </div>
+            <div class="card">
+                <h3>Swag Labs</h3>
+                <p>A collection of automated tests for the popular demo websites, built using Selenium and JavaScript.
+                </p>
+                <div class="tech-stack">
+                    <div class="tech-item" data-visible="true"> <img
+                            src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium"
+                            class="tech-icon" /> </div>
+                    <div class="tech-item" data-visible="true"> <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                            alt="JavaScript" class="tech-icon" /> </div>
+                </div> <a href="https://github.com/hasanazeerkhan/orangehrm-automation-cypress" class="github-link"
+                    target="_blank">View on GitHub →</a>
+            </div>
+            <div class="card">
+                <h3>Facebook - Login</h3>
+                <p>Automating login to facebook page with some mock data</p>
+                <div class="tech-stack">
+                    <div class="tech-item" data-visible="true"> <img src="img\Cypress_Logotype_White.svg" alt="Cypress"
+                            class="tech-icon" /> </div>
+                    <div class="tech-item" data-visible="true"> <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                            alt="JavaScript" class="tech-icon" /> </div>
+                </div> <a href="https://github.com/hasanazeerkhan/facebook-automation-cypress" class="github-link"
+                    target="_blank">View on GitHub →</a>
+            </div>
+            <div class="card">
+                <h3>Swag Labs</h3>
+                <p>Automated tests for the Swag Labs application using Cypress. The goal is to ensure the functionality
+                    and reliability of the application through automated end-to-end testing.</p>
+                <div class="tech-stack">
+                    <div class="tech-item" data-visible="true"> <img src="img\Cypress_Logotype_White.svg" alt="Cypress"
+                            class="tech-icon" /> </div>
+                    <div class="tech-item" data-visible="true"> <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                            alt="JavaScript" class="tech-icon" /> </div>
+                </div> <a href="https://github.com/hasanazeerkhan/swaglabs-automation-cypress" class="github-link"
+                    target="_blank">View on GitHub →</a>
+            </div>
+            <div class="card">
+                <h3>DemoQA</h3>
+                <p>This project is designed to demonstrate automated testing using the Cypress framework for the DemoQA
+                    application.</p>
+                <div class="tech-stack">
+                    <div class="tech-item" data-visible="true"> <img src="img\Cypress_Logotype_White.svg" alt="Cypress"
+                            class="tech-icon" /> </div>
+                    <div class="tech-item" data-visible="true"> <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                            alt="JavaScript" class="tech-icon" /> </div>
+                </div> <a href="https://github.com/hasanazeerkhan/demoqa-automation-cypress" class="github-link"
+                    target="_blank">View on GitHub →</a>
+            </div>
+            <div class="card">
+                <h3>OrangeHRM</h3>
+                <p>Automated tests for the OrangeHRM application using Cypress. The aim is to ensure the functionality
+                    and stability of the application through automated UI testing.</p>
+                <div class="tech-stack">
+                    <div class="tech-item" data-visible="true"> <img src="img\Cypress_Logotype_White.svg" alt="Cypress"
+                            class="tech-icon" /> </div>
+                    <div class="tech-item" data-visible="true"> <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                            alt="JavaScript" class="tech-icon" /> </div>
+                </div> <a href="https://github.com/hasanazeerkhan/orangehrm-automation-cypress" class="github-link"
+                    target="_blank">View on GitHub →</a>
+            </div>
+            <div class="card">
+                <h3>Manual Testing Resources</h3>
+                <p>This repository provides a collection of ready-to-use templates for various aspects of manual
+                    software testing</p>
+                <div class="tech-stack"> <span class="skill-tag">Functional Testing</span> <span class="skill-tag">Test
+                        planning</span> <span class="skill-tag">Bug templates</span> <span class="skill-tag">Test
+                        Strategy</span> <span class="skill-tag">Test Summary Report</span> </div> <a
+                    href="https://github.com/hasanazeerkhan/manual-testing" class="github-link" target="_blank">View on
+                    GitHub →</a>
+            </div>
         </div>
     </section>
-
     <section id="experience">
         <h2>Experience</h2>
         <div class="card">
-            <div style="display: flex; align-items: center;">
-                <img src="img\infosys-nyn-tagline-reverse-png.png" alt="JavaScript" style="width: 40px; height: auto; margin-right: 0.5rem;">
+            <div style="display: flex; align-items: center;"> <img src="img\infosys-nyn-tagline-reverse-png.png"
+                    alt="JavaScript" style="width: 40px; height: auto; margin-right: 0.5rem;">
                 <h3 style="margin: 0;">Quality Engineering Analyst</h3>
             </div>
             <p class="timeline">November 2024 - Present</p>
-            <p>Led the development and implementation of automated testing solutions for web applications.</p>
+            <p>Creating test cases, test plans and designing the testing to make sure testing is handled in proper way.
+            </p>
             <div class="skills-list">
-                <div class="tech-item" data-visible="true">
-                    <img src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" class="tech-icon" />
-                    Playwright
-                </div>
-                <div class="tech-item" data-visible="true">
-                    <img src="https://cucumber.io/img/logo.svg" alt="Cucumber" class="tech-icon" />
-                    Cucumber
-                </div>
-                <div class="tech-item" data-visible="true">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript" class="tech-icon" />
-                    JavaScript
-                </div>
-                <span class="skill-tag">Functional Testing</span>
-                <span class="skill-tag">Test planning</span>
+                <div class="tech-item" data-visible="true"> <img src="https://playwright.dev/img/playwright-logo.svg"
+                        alt="Playwright" class="tech-icon" /> Playwright </div>
+                <div class="tech-item" data-visible="true"> <img src="https://cucumber.io/img/logo.svg" alt="Cucumber"
+                        class="tech-icon" /> Cucumber </div>
+                <div class="tech-item" data-visible="true"> <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript"
+                        class="tech-icon" /> JavaScript </div> <span class="skill-tag">Functional Testing</span> <span
+                    class="skill-tag">Test planning</span>
             </div>
         </div>
         <div class="card">
-            <div style="display: flex; align-items: center;">
-                <img src="img\zoho-logo-darkbg.svg" alt="JavaScript" style="width: 40px; height: auto; margin-right: 0.5rem;">
+            <div style="display: flex; align-items: center;"> <img src="img\zoho-logo-darkbg.svg" alt="JavaScript"
+                    style="width: 40px; height: auto; margin-right: 0.5rem;">
                 <h3 style="margin: 0;">Member Technical Staff - QA</h3>
             </div>
-            <p class="timeline">March 2024 - September 2024</p>
-            <p>As a Senior tester on the Trident team, I have contributions to our release tasks and involved in developing test cases, conducted competitor analysis to pinpoint gaps, and improved existing testing processes to enhance bug detection. Additionally, I was responsible for executing and updating our Sanity and Smoke test cases and User acceptance testing to make sure no breakage is seen when the product is reaching out to customers. My role also involved hands-on experience with accessing logs and Apptics events for released products, assessing risks before sending builds to customers.</p>
+            <p class="timeline">March 2024 - September</p>
+            <p>As a Senior tester on the Trident team, I have contributions to our release tasks and involved in
+                developing test cases, conducted competitor analysis to pinpoint gaps, and improved existing testing
+                processes to enhance bug detection. Additionally, I was responsible for executing and updating our
+                Sanity and Smoke test cases and User acceptance testing to make sure no breakage is seen when the
+                product is reaching out to customers. My role also involved hands-on experience with accessing logs and
+                Apptics events for released products, assessing risks before sending builds to customers.</p>
             <div class="skills-list">
-                <div class="tech-item" data-visible="true">
-                    <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/projects.svg" alt="JavaScript" class="tech-icon" />
-                    Zoho Projects
-                </div>
-                <span class="skill-tag">Functional Testing</span>
-                <span class="skill-tag">Test planning</span>
-                <span class="skill-tag">Bug management</span>
+                <div class="tech-item" data-visible="true"> <img
+                        src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/projects.svg" alt="JavaScript"
+                        class="tech-icon" /> Zoho Projects </div> <span class="skill-tag">Functional Testing</span>
+                <span class="skill-tag">Test planning</span> <span class="skill-tag">Bug management</span> <span
+                    class="skill-tag">Zoho Projects</span>
             </div>
         </div>
         <div class="card">
-            <div style="display: flex; align-items: center;">
-                <img src="https://modelon.com/wp-content/uploads/2022/06/modelon-logo.svg" alt="JavaScript" style="width: 40px; height: auto; margin-right: 0.5rem;">
+            <div style="display: flex; align-items: center;"> <img
+                    src="https://modelon.com/wp-content/uploads/2022/06/modelon-logo.svg" alt="JavaScript"
+                    style="width: 40px; height: auto; margin-right: 0.5rem;">
                 <h3 style="margin: 0;">Test Engineer</h3>
             </div>
             <p class="timeline">November 2024 - Present</p>
-            <p>As a member of the manual testing team, I executed approximately 1100 test cases per release for the complex software Modelon Impact. This encompassed various testing types, including regression, smoke, sanity, exploratory, and user acceptance testing for both web and desktop applications, adhering to Agile release practices.
-
-                I played a key role in designing test cases for different features, planning and allocating resources, and refining existing manual test cases for automation. Additionally, I was instrumental in defining workflows to improve quality control and defect management using JIRA.
-                
-                In transitioning to automation testing, I contributed to enhancing our help center's quality by testing various website components. This project involved writing over 50 test cases in JavaScript and Cypress, executed over two days. Building on this success, I developed over 20 test cases for Modelon Impact using Selenium, JavaScript, and Cucumber, which were integrated into Jenkins for continuous monitoring of product stability with each release.
-                
-                I also gained experience with Docker, Modelica concepts, Modelon Impact, and version control systems like Git and Svn.
-                
-                Furthermore, I was praised for my effective collaboration with cross-functional teams, ensuring seamless coordination between development and QA. I played a pivotal role in introducing new technologies and practices to the team by closely monitoring testing trends, diversifying our testing approach, and ensuring a comprehensive evaluation of our system's functionality.</p>
+            <p>As a member of the manual testing team, I executed approximately 1100 test cases per release for the
+                complex software Modelon Impact. This encompassed various testing types, including regression, smoke,
+                sanity, exploratory, and user acceptance testing for both web and desktop applications, adhering to
+                Agile release practices. I played a key role in designing test cases for different features, planning
+                and allocating resources, and refining existing manual test cases for automation. Additionally, I was
+                instrumental in defining workflows to improve quality control and defect management using JIRA. In
+                transitioning to automation testing, I contributed to enhancing our help center's quality by testing
+                various website components. This project involved writing over 50 test cases in JavaScript and Cypress,
+                executed over two days. Building on this success, I developed over 20 test cases for Modelon Impact
+                using Selenium, JavaScript, and Cucumber, which were integrated into Jenkins for continuous monitoring
+                of product stability with each release. I also gained experience with Docker, Modelica concepts, Modelon
+                Impact, and version control systems like Git and Svn. Furthermore, I was praised for my effective
+                collaboration with cross-functional teams, ensuring seamless coordination between development and QA. I
+                played a pivotal role in introducing new technologies and practices to the team by closely monitoring
+                testing trends, diversifying our testing approach, and ensuring a comprehensive evaluation of our
+                system's functionality.</p>
             <div class="skills-list">
-                <div class="tech-item" data-visible="true">
-                    <img src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium" class="tech-icon" />
-                    Selenium
-                </div>
-                <div class="tech-item" data-visible="true">
-                    <img src="img\Cypress_Logotype_White.svg" alt="Cypress" class="tech-icon" />
-                    Cypress
-                </div>
-                <div class="tech-item" data-visible="true">
-                    <img src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" class="tech-icon" />
-                    Playwright
-                </div>
-                <div class="tech-item" data-visible="true">
-                    <img src="https://cucumber.io/img/logo.svg" alt="Cucumber" class="tech-icon" />
-                    Cucumber
-                </div>
-                <div class="tech-item" data-visible="true">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript" class="tech-icon" />
-                    JavaScript
-                </div>
-                <div class="tech-item" data-visible="true">
-                    <img src="https://modelica.org/images/ma-logos/dark/m-ball.svg" alt="JavaScript" class="tech-icon" />
-                    Modelica
-                </div>
-                <div class="tech-item" data-visible="true">
-                    <img src="img\Jira Software-icon-blue.svg" alt="JIRA" class="tech-icon" />
-                    JIRA
-                </div>
-                <div class="tech-item" data-visible="true">
-                    <img src="img\Git-Icon-White.svg" alt="GIT" class="tech-icon" />
-                    GIT
-                </div>
-                <div class="tech-item" data-visible="true">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Apache_Subversion_logo.svg/330px-Apache_Subversion_logo.svg.png" alt="SVN" class="tech-icon" />
-                    SVN
-                </div>
-                <span class="skill-tag">Functional Testing</span>
+                <div class="tech-item" data-visible="true"> <img
+                        src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium"
+                        class="tech-icon" /> Selenium </div>
+                <div class="tech-item" data-visible="true"> <img src="img\Cypress_Logotype_White.svg" alt="Cypress"
+                        class="tech-icon" /> Cypress </div>
+                <div class="tech-item" data-visible="true"> <img src="https://playwright.dev/img/playwright-logo.svg"
+                        alt="Playwright" class="tech-icon" /> Playwright </div>
+                <div class="tech-item" data-visible="true"> <img src="https://cucumber.io/img/logo.svg" alt="Cucumber"
+                        class="tech-icon" /> Cucumber </div>
+                <div class="tech-item" data-visible="true"> <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript"
+                        class="tech-icon" /> JavaScript </div>
+                <div class="tech-item" data-visible="true"> <img
+                        src="https://modelica.org/images/ma-logos/dark/m-ball.svg" alt="JavaScript" class="tech-icon" />
+                    Modelica </div>
+                <div class="tech-item" data-visible="true"> <img src="img\Jira Software-icon-blue.svg" alt="JIRA"
+                        class="tech-icon" /> JIRA </div>
+                <div class="tech-item" data-visible="true"> <img src="img\Git-Icon-White.svg" alt="GIT"
+                        class="tech-icon" /> GIT </div>
+                <div class="tech-item" data-visible="true"> <img
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Apache_Subversion_logo.svg/330px-Apache_Subversion_logo.svg.png"
+                        alt="SVN" class="tech-icon" /> SVN </div> <span class="skill-tag">Functional Testing</span>
             </div>
         </div>
     </section>
-
     <section id="certifications">
         <h2>Certifications</h2>
-        <div class="card">
-            <h3>ISTQB Certified Tester Foundation Level</h3>
-            <p>International Software Testing Qualifications Board</p>
-            <p class="timeline">2022</p>
-        </div>
-        <div class="card">
-            <h3>Selenium WebDriver with Java</h3>
-            <p>Udemy</p>
-            <p class="timeline">2021</p>
+        <div class="projects-container">
+            <div class="achievement-card">
+                <h3>ISTQB Foundation Level</h3>
+                <p>International Software Testing Qualifications Board</p>
+                <p class="timeline">Feb 2022</p>
             </div>
-            </section>
+            <div class="achievement-card">
+                <h3>Selenium WebDriver with JavaScript</h3>
+                <p>Udemy</p>
+                <p class="timeline">April 2023</p>
+            </div>
+            <div class="achievement-card">
+                <h3>Git Essential Training: The Basics</h3>
+                <p>LinkedIn</p>
+                <p class="timeline">September 2022</p>
+            </div>
+            <div class="achievement-card">
+                <h3>Test Automation Foundations</h3>
+                <p>LinkedIn</p>
+                <p class="timeline">September 2022</p>
+            </div>
+            <div class="achievement-card">
+                <h3>Git Essentials: The Basics</h3>
+                <p>LinkedIn</p>
+                <p class="timeline">September 2022</p>
+            </div>
+            <div class="achievement-card">
+                <h3>Software Testing: Tools</h3>
+                <p>LinkedIn</p>
+                <p class="timeline">September 2022</p>
+            </div>
+        </div>
+    </section>
+    <section id="achievements">
+        <h2>Achievements</h2>
+        <div class="projects-container">
+            <div class="achievement-card">
+                <h3>Diploma of Innovation</h3>
+                <p>June 2022</p>
+            </div>
+            <div class="achievement-card">
+                <h3>Diploma of Engagement</h3>
+                <p>June 2022</p>
+            </div>
+        </div>
+    </section>
+    <!-- <section id="blogs">         <h2>Blogs</h2>         <div class="achievement-card">             <h3>Coming Soon!</h3>             <p>Stay tuned for insightful articles about software testing, automation, and best practices.</p>         </div>     </section> -->
+    </section>
+    <script>         function createMatrixBackground() { const matrixBg = document.getElementById('matrixBg'); const characters = '0123456789QCABCDEFGHIJKLMNOPQRSTUVWXYZ'; const columns = Math.floor(window.innerWidth / 20); for (let i = 0; i < columns; i++) { const character = document.createElement('div'); character.className = 'matrix-character'; character.style.left = `${i * 20}px`; character.style.animationDelay = `${Math.random() * 8}s`; character.textContent = characters[Math.floor(Math.random() * characters.length)]; matrixBg.appendChild(character); } } createMatrixBackground(); document.querySelector('.scroll-indicator').addEventListener('click', () => { document.getElementById('about').scrollIntoView({ behavior: 'smooth' }); });          // Initialize tech stack visibility         document.addEventListener('DOMContentLoaded', () => {             const techItems = document.querySelectorAll('.tech-item');             techItems.forEach(item => {                 const isVisible = item.getAttribute('data-visible') === 'true';                 item.style.display = isVisible ? 'flex' : 'none';             });         });     </script>
+</body>
+<div class="container">
+    <h1>My Blog</h1>
+    <p class="subtitle">Discover interesting articles and insights</p>
+    <div class="search-container"> <input type="text" class="search-input" placeholder="Search articles..."> <svg
+            class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg> </div>
+</div>
+<main class="container">
+    <div class="blog-grid">
+        <article class="blog-card">
+            <div class="blog-image" style="background-image: url('/api/placeholder/400/200')"></div>
+            <div class="blog-content"> <span class="blog-category">Programming</span>
+                <h2 class="blog-title">Getting Started with Web Development</h2>
+                <p class="blog-excerpt">Learn the fundamentals of web development and start building your first website
+                    from scratch.</p>
+                <div class="blog-meta"> <span>John Doe</span> <span>5 min read</span> </div>
+            </div>
+        </article>
+    </div>
+</main>
+<script>     const searchInput = document.querySelector('.search-input'); const blogCards = document.querySelectorAll('.blog-card'); searchInput.addEventListener('input', function (e) { const searchTerm = e.target.value.toLowerCase(); blogCards.forEach(function (card) { const title = card.querySelector('.blog-title').textContent.toLowerCase(); const category = card.querySelector('.blog-category').textContent.toLowerCase(); const excerpt = card.querySelector('.blog-excerpt').textContent.toLowerCase(); if (title.includes(searchTerm) || category.includes(searchTerm) || excerpt.includes(searchTerm)) { card.style.display = 'block'; } else { card.style.display = 'none'; } }); }); </script>
 
-            <section id="blogs">
-                <h2>Blogs</h2>
-                <div class="coming-soon">
-                    <h3>Coming Soon!</h3>
-                    <p>Stay tuned for insightful articles about software testing, automation, and best practices.</p>
-                </div>
-            </section>
-            </section>
-
-            <script>
-                function createMatrixBackground() {
-                    const matrixBg = document.getElementById('matrixBg');
-                    const characters = '01テストQA検証バグ修正';
-                    const columns = Math.floor(window.innerWidth / 20);
-                    
-                    for (let i = 0; i < columns; i++) {
-                        const character = document.createElement('div');
-                        character.className = 'matrix-character';
-                        character.style.left = `${i * 20}px`;
-                        character.style.animationDelay = `${Math.random() * 8}s`;
-                        character.textContent = characters[Math.floor(Math.random() * characters.length)];
-                        matrixBg.appendChild(character);
-                    }
-                }
-        
-                createMatrixBackground();
-        
-                document.querySelector('.scroll-indicator').addEventListener('click', () => {
-                    document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
-                });
-        
-                // Initialize tech stack visibility
-                document.addEventListener('DOMContentLoaded', () => {
-                    const techItems = document.querySelectorAll('.tech-item');
-                    techItems.forEach(item => {
-                        const isVisible = item.getAttribute('data-visible') === 'true';
-                        item.style.display = isVisible ? 'flex' : 'none';
-                    });
-                });
-            </script>
-        </body>
-        </html>
+</html>
