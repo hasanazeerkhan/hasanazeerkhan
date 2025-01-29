@@ -29,7 +29,7 @@
             margin: 0 auto;
         }
 
-        section+section {
+        section + section {
             padding-top: 0;
         }
 
@@ -193,11 +193,10 @@
         }
 
         /* Projects Grid Layout */
-        .projects-container,
-        .blog-grid {
+        .projects-container, .blog-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
             padding: 0.5rem;
             width: 100%;
         }
@@ -419,6 +418,7 @@
         .blog-card {
             border: 1px solid rgba(100, 255, 218, 0.1);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
 
         .blog-card:hover {
@@ -577,9 +577,12 @@
     </section>
     <section id="projects">
         <h2>Projects</h2>
-        <div class="tag-filter"> <button class="tag-btn active" data-tag="all">All</button> <button class="tag-btn"
-                data-tag="Selenium">Selenium</button> <button class="tag-btn" data-tag="Cypress">Cypress</button>
-            <button class="tag-btn" data-tag="Playwright">Playwright</button> </div>
+        <div class="tag-filter">
+            <button class="tag-btn active" data-tag="all">All</button>
+            <button class="tag-btn" data-tag="Selenium">Selenium</button>
+            <button class="tag-btn" data-tag="Cypress">Cypress</button>
+            <button class="tag-btn" data-tag="Playwright">Playwright</button>
+        </div>
         <div class="projects-container">
             <div class="card">
                 <h3>Bank Of India</h3>
@@ -776,21 +779,13 @@
             </div>
             <p class="timeline">November 2024 - Present</p>
             <p>As a member of the manual testing team, I executed approximately 1100 test cases per release for the
-                complex software Modelon Impact. This encompassed various testing types, including regression, smoke,
-                sanity, exploratory, and user acceptance testing for both web and desktop applications, adhering to
+                complex software Modelon Impact. This encompassed various testing types adhering to
                 Agile release practices. I played a key role in designing test cases for different features, planning
-                and allocating resources, and refining existing manual test cases for automation. Additionally, I was
-                instrumental in defining workflows to improve quality control and defect management using JIRA. In
-                transitioning to automation testing, I contributed to enhancing our help center's quality by testing
+                and allocating resources, and refining existing manual test cases for automation. I contributed to enhancing our help center's quality by testing
                 various website components. This project involved writing over 50 test cases in JavaScript and Cypress,
                 executed over two days. Building on this success, I developed over 20 test cases for Modelon Impact
                 using Selenium, JavaScript, and Cucumber, which were integrated into Jenkins for continuous monitoring
-                of product stability with each release. I also gained experience with Docker, Modelica concepts, Modelon
-                Impact, and version control systems like Git and Svn. Furthermore, I was praised for my effective
-                collaboration with cross-functional teams, ensuring seamless coordination between development and QA. I
-                played a pivotal role in introducing new technologies and practices to the team by closely monitoring
-                testing trends, diversifying our testing approach, and ensuring a comprehensive evaluation of our
-                system's functionality.</p>
+                of product stability with each release.</p>
             <div class="skills-list">
                 <div class="tech-item" data-visible="true"> <img
                         src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium"
@@ -870,25 +865,60 @@
 </body>
 <section id="blogs">
     <h2>My Blogs</h2>
-    <div class="blog-grid"> <!-- Blog cards remain the same -->
+    <div class="blog-grid">
+        <!-- Blog cards remain the same -->
         <article class="blog-card">
             <div class="blog-image" style="background-image: url('/api/placeholder/400/200')"></div>
-            <div class="blog-content"> <span class="blog-category">WIP</span>
+            <div class="blog-content">
+                <span class="blog-category">WIP</span>
                 <h2 class="blog-title">Contents for the blog is under progress...</h2>
                 <p class="blog-excerpt">Guess what the content is all about</p>
-                <div class="blog-meta"> <span>Hasan</span> <span>2 min read</span> </div>
+                <div class="blog-meta">
+                    <span>Hasan</span>
+                    <span>2 min read</span>
+                </div>
             </div>
         </article>
+
         <article class="blog-card">
             <div class="blog-image" style="background-image: url('/api/placeholder/400/200')"></div>
-            <div class="blog-content"> <span class="blog-category">WIP</span>
+            <div class="blog-content">
+                <span class="blog-category">WIP</span>
                 <h2 class="blog-title">Contents for the blog is under progress...</h2>
                 <p class="blog-excerpt">Guess what the content is all about</p>
-                <div class="blog-meta"> <span>Hasan</span> <span>2 min read</span> </div>
+                <div class="blog-meta">
+                    <span>Hasan</span>
+                    <span>2 min read</span>
+                </div>
             </div>
         </article>
     </div>
 </section>
-<script> // Project filtering const tagButtons = document.querySelectorAll('.tag-btn'); const projectCards = document.querySelectorAll('.projects-container .card'); tagButtons.forEach(button => { button.addEventListener('click', () => { // Remove active class from all buttons tagButtons.forEach(btn => btn.classList.remove('active')); // Add active class to clicked button button.classList.add('active'); const selectedTag = button.getAttribute('data-tag'); projectCards.forEach(card => { if (selectedTag === 'all') { card.style.display = 'block'; } else { const techStack = card.querySelector('.tech-stack'); const hasTag = techStack.innerHTML.includes(selectedTag); card.style.display = hasTag ? 'block' : 'none'; } }); }); }); </script>
+<script>     
+// Project filtering
+const tagButtons = document.querySelectorAll('.tag-btn');
+        const projectCards = document.querySelectorAll('.projects-container .card');
 
+        tagButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                tagButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const selectedTag = button.getAttribute('data-tag');
+                
+                projectCards.forEach(card => {
+                    if (selectedTag === 'all') {
+                        card.style.display = 'block';
+                    } else {
+                        const techStack = card.querySelector('.tech-stack');
+                        const hasTag = techStack.innerHTML.includes(selectedTag);
+                        card.style.display = hasTag ? 'block' : 'none';
+                    }
+                });
+            });
+        });
+</script>
+    
 </html>
