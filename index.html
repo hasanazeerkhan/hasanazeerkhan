@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hasan</title>
+    <link rel="icon" href="img\zoho-logo-darkbg.svg" type="image/x-icon">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             scroll-behavior: smooth;
+            transition: all 0.3s ease;
         }
 
         body {
@@ -22,9 +24,13 @@
 
         section {
             min-height: 100vh;
-            padding: 4rem 2rem;
+            padding: 2rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        section+section {
+            padding-top: 0;
         }
 
         .hero {
@@ -107,9 +113,23 @@
         }
 
         h2 {
-            font-size: 2rem;
-            color: #e6f1ff;
-            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #64ffda, transparent);
         }
 
         .title {
@@ -173,26 +193,29 @@
         }
 
         /* Projects Grid Layout */
-        .projects-container {
+        .projects-container,
+        .blog-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            padding: 1rem;
+            padding: 0.5rem;
+            width: 100%;
         }
 
         .card {
             background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: 8px;
+            padding: 1.75rem;
+            border-radius: 12px;
             margin-bottom: 1.5rem;
-            transition: transform 0.3s ease;
-            height: 100%;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(100, 255, 218, 0.1);
             border-color: #64ffda;
+            box-shadow: 0 8px 30px rgba(100, 255, 218, 0.1);
         }
 
         .card h3 {
@@ -278,7 +301,7 @@
             border-radius: 8px;
             margin-bottom: 1.5rem;
             transition: transform 0.3s ease;
-            border-left: 4px solid #64ffda;
+            /* border-left: 4px solid #64ffda; */
         }
 
         .achievement-card h3 {
@@ -288,13 +311,8 @@
 
         .achievement-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(100, 255, 218, 0.1);
             border-color: #64ffda;
-        }
-
-        .coming-soon h3 {
-            color: #64ffda;
-            margin-bottom: 1rem;
+            box-shadow: 0 8px 30px rgba(100, 255, 218, 0.1);
         }
 
         @media (max-width: 768px) {
@@ -315,7 +333,7 @@
 
         @media (max-width: 768px) {
             section {
-                padding: 2rem 1rem;
+                padding: 1.5rem 1rem;
             }
 
             h1 {
@@ -323,7 +341,8 @@
             }
 
             h2 {
-                font-size: 1.5rem;
+                font-size: 2rem;
+                margin-bottom: 2rem;
             }
 
             .projects-container {
@@ -398,18 +417,14 @@
         }
 
         .blog-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         .blog-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(100, 255, 218, 0.1);
             border-color: #64ffda;
+            box-shadow: 0 8px 30px rgba(100, 255, 218, 0.1);
         }
 
         .blog-image {
@@ -436,6 +451,7 @@
         }
 
         .blog-title {
+            text-align: left;
             font-size: 1.25rem;
             color: #ccd6f6;
             margin-bottom: 10px;
@@ -455,6 +471,52 @@
             font-size: 0.85rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 15px;
+        }
+
+        .tag-filter {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+        }
+
+        .tag-btn {
+            background: rgba(100, 255, 218, 0.1);
+            color: #64ffda;
+            border: 1px solid #64ffda;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tag-btn.active {
+            background: #64ffda;
+            color: #0a192f;
+        }
+
+        .tag-btn:hover {
+            background: rgba(100, 255, 218, 0.2);
+        }
+
+        /* Update blog grid to match projects grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 1024px) {
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -515,6 +577,9 @@
     </section>
     <section id="projects">
         <h2>Projects</h2>
+        <div class="tag-filter"> <button class="tag-btn active" data-tag="all">All</button> <button class="tag-btn"
+                data-tag="Selenium">Selenium</button> <button class="tag-btn" data-tag="Cypress">Cypress</button>
+            <button class="tag-btn" data-tag="Playwright">Playwright</button> </div>
         <div class="projects-container">
             <div class="card">
                 <h3>Bank Of India</h3>
@@ -800,33 +865,30 @@
             </div>
         </div>
     </section>
-    <!-- <section id="blogs">         <h2>Blogs</h2>         <div class="achievement-card">             <h3>Coming Soon!</h3>             <p>Stay tuned for insightful articles about software testing, automation, and best practices.</p>         </div>     </section> -->
     </section>
     <script>         function createMatrixBackground() { const matrixBg = document.getElementById('matrixBg'); const characters = '0123456789QCABCDEFGHIJKLMNOPQRSTUVWXYZ'; const columns = Math.floor(window.innerWidth / 20); for (let i = 0; i < columns; i++) { const character = document.createElement('div'); character.className = 'matrix-character'; character.style.left = `${i * 20}px`; character.style.animationDelay = `${Math.random() * 8}s`; character.textContent = characters[Math.floor(Math.random() * characters.length)]; matrixBg.appendChild(character); } } createMatrixBackground(); document.querySelector('.scroll-indicator').addEventListener('click', () => { document.getElementById('about').scrollIntoView({ behavior: 'smooth' }); });          // Initialize tech stack visibility         document.addEventListener('DOMContentLoaded', () => {             const techItems = document.querySelectorAll('.tech-item');             techItems.forEach(item => {                 const isVisible = item.getAttribute('data-visible') === 'true';                 item.style.display = isVisible ? 'flex' : 'none';             });         });     </script>
 </body>
-<div class="container">
-    <h1>My Blog</h1>
-    <p class="subtitle">Discover interesting articles and insights</p>
-    <div class="search-container"> <input type="text" class="search-input" placeholder="Search articles..."> <svg
-            class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg> </div>
-</div>
-<main class="container">
-    <div class="blog-grid">
+<section id="blogs">
+    <h2>My Blogs</h2>
+    <div class="blog-grid"> <!-- Blog cards remain the same -->
         <article class="blog-card">
             <div class="blog-image" style="background-image: url('/api/placeholder/400/200')"></div>
-            <div class="blog-content"> <span class="blog-category">Programming</span>
-                <h2 class="blog-title">Getting Started with Web Development</h2>
-                <p class="blog-excerpt">Learn the fundamentals of web development and start building your first website
-                    from scratch.</p>
-                <div class="blog-meta"> <span>John Doe</span> <span>5 min read</span> </div>
+            <div class="blog-content"> <span class="blog-category">WIP</span>
+                <h2 class="blog-title">Contents for the blog is under progress...</h2>
+                <p class="blog-excerpt">Guess what the content is all about</p>
+                <div class="blog-meta"> <span>Hasan</span> <span>2 min read</span> </div>
+            </div>
+        </article>
+        <article class="blog-card">
+            <div class="blog-image" style="background-image: url('/api/placeholder/400/200')"></div>
+            <div class="blog-content"> <span class="blog-category">WIP</span>
+                <h2 class="blog-title">Contents for the blog is under progress...</h2>
+                <p class="blog-excerpt">Guess what the content is all about</p>
+                <div class="blog-meta"> <span>Hasan</span> <span>2 min read</span> </div>
             </div>
         </article>
     </div>
-</main>
-<script>     const searchInput = document.querySelector('.search-input'); const blogCards = document.querySelectorAll('.blog-card'); searchInput.addEventListener('input', function (e) { const searchTerm = e.target.value.toLowerCase(); blogCards.forEach(function (card) { const title = card.querySelector('.blog-title').textContent.toLowerCase(); const category = card.querySelector('.blog-category').textContent.toLowerCase(); const excerpt = card.querySelector('.blog-excerpt').textContent.toLowerCase(); if (title.includes(searchTerm) || category.includes(searchTerm) || excerpt.includes(searchTerm)) { card.style.display = 'block'; } else { card.style.display = 'none'; } }); }); </script>
+</section>
+<script> // Project filtering const tagButtons = document.querySelectorAll('.tag-btn'); const projectCards = document.querySelectorAll('.projects-container .card'); tagButtons.forEach(button => { button.addEventListener('click', () => { // Remove active class from all buttons tagButtons.forEach(btn => btn.classList.remove('active')); // Add active class to clicked button button.classList.add('active'); const selectedTag = button.getAttribute('data-tag'); projectCards.forEach(card => { if (selectedTag === 'all') { card.style.display = 'block'; } else { const techStack = card.querySelector('.tech-stack'); const hasTag = techStack.innerHTML.includes(selectedTag); card.style.display = hasTag ? 'block' : 'none'; } }); }); }); </script>
 
 </html>
