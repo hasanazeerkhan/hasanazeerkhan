@@ -29,7 +29,7 @@
             margin: 0 auto;
         }
 
-        section + section {
+        section+section {
             padding-top: 0;
         }
 
@@ -193,7 +193,8 @@
         }
 
         /* Projects Grid Layout */
-        .projects-container, .blog-grid {
+        .projects-container,
+        .blog-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
@@ -518,6 +519,69 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        .about-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+        }
+
+        .about-images {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            min-width: 150px;
+        }
+
+        .about-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid #64ffda;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+
+        .about-image:hover {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-paragraph {
+            color: #8892b0;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .highlight {
+            color: #64ffda;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-images {
+                flex-direction: row;
+                max-width: 100%;
+                justify-content: center;
+                margin-bottom: 1rem;
+            }
+
+            .about-image {
+                width: 100px;
+                height: 100px;
+            }
+        }
     </style>
 </head>
 
@@ -563,313 +627,350 @@
             </svg>
         </div>
     </section>
-    <section id="about">
+    <<section id="about">
         <h2>About Me</h2>
         <div class="card">
-            <p>Experienced Senior QA Tester with a strong background in both manual and automation testing. Expert in
-                designing and executing test cases, optimizing processes, and transitioning from manual to automated
-                testing. Proven ability to handle over 1100 test cases per release, including regression, smoke, and
-                user acceptance testing in Agile settings. Skilled in using JavaScript, Cypress, Selenium, and Cucumber
-                for automation, with hands-on experience in Git, and SVN. Recognized for contributions to innovation and
-                effective collaboration with cross-functional teams to enhance product quality and streamline testing
-                practices.</p>
+            <div class="about-content">
+                <!-- <div class="about-images">
+                    <img src="/img/imgOne.jpg" alt="Hasan at work" class="about-image">
+                    <img src="/api/placeholder/150/150" alt="Testing conference" class="about-image">
+                    <img src="/api/placeholder/150/150" alt="Team collaboration" class="about-image">
+                </div> -->
+                <div class="about-text">
+                    <p class="about-paragraph">Hello! I'm Mohammed <span class="highlight">Hasan</span>, Glad to have you here. I am a passionate Software Test Engineer with a
+                        keen eye for quality and a drive for continuous improvement.</p>
+
+                    <p class="about-paragraph">My expertise lies in bridging the gap between manual and automated
+                        testing, transforming complex testing challenges into streamlined, efficient processes. With
+                        over 4 years of experience, I've developed a holistic approach to software quality assurance
+                        that goes beyond traditional testing methodologies.</p>
+
+                    <p class="about-paragraph">Throughout my career, I've been instrumental in managing extensive test
+                        cases across various domains, with a track record of handling over 1,100 test cases per release.
+                        My approach combines meticulous manual testing with cutting-edge automation techniques,
+                        leveraging tools like <span class="highlight">Playwright, Selenium, and Cypress</span> to ensure
+                        comprehensive test coverage.</p>
+
+                    <p class="about-paragraph">What sets me apart is my ability to collaborate effectively with
+                        cross-functional teams, translating technical insights into actionable improvements. I'm not
+                        just a tester, but an <span class="highlight">innovation catalyst</span> who continuously seeks
+                        to enhance product quality and streamline testing practices. My <span class="highlight">passion for testing</span> sets me apart from other testers while going to an extra mile</p>
+                </div>
+            </div>
         </div>
-    </section>
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="tag-filter">
-            <button class="tag-btn active" data-tag="all">All</button>
-            <button class="tag-btn" data-tag="Selenium">Selenium</button>
-            <button class="tag-btn" data-tag="Cypress">Cypress</button>
-            <button class="tag-btn" data-tag="Playwright">Playwright</button>
-        </div>
-        <div class="projects-container">
-            <div class="card">
-                <h3>Bank Of India</h3>
-                <p>A Page Object Model framework to test the website Bank Of India. As a realtime example there are lot
-                    of dynamic elements have been handled here</p>
-                <div class="tech-stack">
-                    <div class="tech-item" data-visible="true"> <img
-                            src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" class="tech-icon" />
-                    </div>
-                    <div class="tech-item" data-visible="true"> <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                            alt="JavaScript" class="tech-icon" /> </div>
-                </div> <a href="https://github.com/hasanazeerkhan/playwright-bankOfIndia" class="github-link"
-                    target="_blank">View on GitHub →</a>
+        </section>
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="tag-filter">
+                <button class="tag-btn active" data-tag="all">All</button>
+                <button class="tag-btn" data-tag="Selenium">Selenium</button>
+                <button class="tag-btn" data-tag="Cypress">Cypress</button>
+                <button class="tag-btn" data-tag="Playwright">Playwright</button>
             </div>
-            <div class="card">
-                <h3>Demo QA</h3>
-                <p>A comprehensive automation framework for testing the demoQA website using Playwright</p>
-                <div class="tech-stack">
-                    <div class="tech-item" data-visible="true"> <img
-                            src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" class="tech-icon" />
-                    </div>
-                    <div class="tech-item" data-visible="true"> <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                            alt="JavaScript" class="tech-icon" /> </div>
-                </div> <a href="https://github.com/hasanazeerkhan/demoQA-automation-playwright" class="github-link"
-                    target="_blank">View on GitHub →</a>
+            <div class="projects-container">
+                <div class="card">
+                    <h3>Bank Of India</h3>
+                    <p>A Page Object Model framework to test the website Bank Of India. As a realtime example there are
+                        lot
+                        of dynamic elements have been handled here</p>
+                    <div class="tech-stack">
+                        <div class="tech-item" data-visible="true"> <img
+                                src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright"
+                                class="tech-icon" />
+                        </div>
+                        <div class="tech-item" data-visible="true"> <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                                alt="JavaScript" class="tech-icon" /> </div>
+                    </div> <a href="https://github.com/hasanazeerkhan/playwright-bankOfIndia" class="github-link"
+                        target="_blank">View on GitHub →</a>
+                </div>
+                <div class="card">
+                    <h3>Demo QA</h3>
+                    <p>A comprehensive automation framework for testing the demoQA website using Playwright</p>
+                    <div class="tech-stack">
+                        <div class="tech-item" data-visible="true"> <img
+                                src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright"
+                                class="tech-icon" />
+                        </div>
+                        <div class="tech-item" data-visible="true"> <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                                alt="JavaScript" class="tech-icon" /> </div>
+                    </div> <a href="https://github.com/hasanazeerkhan/demoQA-automation-playwright" class="github-link"
+                        target="_blank">View on GitHub →</a>
+                </div>
+                <div class="card">
+                    <h3>Techlistic</h3>
+                    <p>This collection of exercises is designed to help you gain practical experience working with
+                        Selenium
+                        WebDriver.</p>
+                    <div class="tech-stack">
+                        <div class="tech-item" data-visible="true"> <img
+                                src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium"
+                                class="tech-icon" /> </div>
+                        <div class="tech-item" data-visible="true"> <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                                alt="JavaScript" class="tech-icon" /> </div>
+                        <div class="tech-item" data-visible="true"> <img src="https://cucumber.io/img/logo.svg"
+                                alt="Cucumber" class="tech-icon" /> </div>
+                    </div> <a href="https://github.com/hasanazeerkhan/selenium-javascript-cucumber" class="github-link"
+                        target="_blank">View on GitHub →</a>
+                </div>
+                <div class="card">
+                    <h3>Facebook</h3>
+                    <p>Automating login to facebook page with some mock data</p>
+                    <div class="tech-stack">
+                        <div class="tech-item" data-visible="true"> <img
+                                src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium"
+                                class="tech-icon" /> </div>
+                        <div class="tech-item" data-visible="true"> <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                                alt="JavaScript" class="tech-icon" /> </div>
+                    </div> <a href="https://github.com/hasanazeerkhan/facebook-automation-selenium-js"
+                        class="github-link" target="_blank">View on GitHub →</a>
+                </div>
+                <div class="card">
+                    <h3>Demo QA</h3>
+                    <p>A comprehensive automation framework for testing the demoQA website using Playwright</p>
+                    <div class="tech-stack">
+                        <div class="tech-item" data-visible="true"> <img
+                                src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium"
+                                class="tech-icon" /> </div>
+                        <div class="tech-item" data-visible="true"> <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                                alt="JavaScript" class="tech-icon" /> </div>
+                    </div> <a href="https://github.com/hasanazeerkhan/demoqa-automation-selenium-js" class="github-link"
+                        target="_blank">View on GitHub →</a>
+                </div>
+                <div class="card">
+                    <h3>Swag Labs</h3>
+                    <p>A collection of automated tests for the popular demo websites, built using Selenium and
+                        JavaScript.
+                    </p>
+                    <div class="tech-stack">
+                        <div class="tech-item" data-visible="true"> <img
+                                src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium"
+                                class="tech-icon" /> </div>
+                        <div class="tech-item" data-visible="true"> <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                                alt="JavaScript" class="tech-icon" /> </div>
+                    </div> <a href="https://github.com/hasanazeerkhan/orangehrm-automation-cypress" class="github-link"
+                        target="_blank">View on GitHub →</a>
+                </div>
+                <div class="card">
+                    <h3>Facebook - Login</h3>
+                    <p>Automating login to facebook page with some mock data</p>
+                    <div class="tech-stack">
+                        <div class="tech-item" data-visible="true"> <img src="img\Cypress_Logotype_White.svg"
+                                alt="Cypress" class="tech-icon" /> </div>
+                        <div class="tech-item" data-visible="true"> <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                                alt="JavaScript" class="tech-icon" /> </div>
+                    </div> <a href="https://github.com/hasanazeerkhan/facebook-automation-cypress" class="github-link"
+                        target="_blank">View on GitHub →</a>
+                </div>
+                <div class="card">
+                    <h3>Swag Labs</h3>
+                    <p>Automated tests for the Swag Labs application using Cypress. The goal is to ensure the
+                        functionality
+                        and reliability of the application through automated end-to-end testing.</p>
+                    <div class="tech-stack">
+                        <div class="tech-item" data-visible="true"> <img src="img\Cypress_Logotype_White.svg"
+                                alt="Cypress" class="tech-icon" /> </div>
+                        <div class="tech-item" data-visible="true"> <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                                alt="JavaScript" class="tech-icon" /> </div>
+                    </div> <a href="https://github.com/hasanazeerkhan/swaglabs-automation-cypress" class="github-link"
+                        target="_blank">View on GitHub →</a>
+                </div>
+                <div class="card">
+                    <h3>DemoQA</h3>
+                    <p>This project is designed to demonstrate automated testing using the Cypress framework for the
+                        DemoQA
+                        application.</p>
+                    <div class="tech-stack">
+                        <div class="tech-item" data-visible="true"> <img src="img\Cypress_Logotype_White.svg"
+                                alt="Cypress" class="tech-icon" /> </div>
+                        <div class="tech-item" data-visible="true"> <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                                alt="JavaScript" class="tech-icon" /> </div>
+                    </div> <a href="https://github.com/hasanazeerkhan/demoqa-automation-cypress" class="github-link"
+                        target="_blank">View on GitHub →</a>
+                </div>
+                <div class="card">
+                    <h3>OrangeHRM</h3>
+                    <p>Automated tests for the OrangeHRM application using Cypress. The aim is to ensure the
+                        functionality
+                        and stability of the application through automated UI testing.</p>
+                    <div class="tech-stack">
+                        <div class="tech-item" data-visible="true"> <img src="img\Cypress_Logotype_White.svg"
+                                alt="Cypress" class="tech-icon" /> </div>
+                        <div class="tech-item" data-visible="true"> <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                                alt="JavaScript" class="tech-icon" /> </div>
+                    </div> <a href="https://github.com/hasanazeerkhan/orangehrm-automation-cypress" class="github-link"
+                        target="_blank">View on GitHub →</a>
+                </div>
+                <div class="card">
+                    <h3>Manual Testing Resources</h3>
+                    <p>This repository provides a collection of ready-to-use templates for various aspects of manual
+                        software testing</p>
+                    <div class="tech-stack"> <span class="skill-tag">Functional Testing</span> </div> <a
+                        href="https://github.com/hasanazeerkhan/manual-testing" class="github-link" target="_blank">View
+                        on
+                        GitHub →</a>
+                </div>
             </div>
+        </section>
+        <section id="experience">
+            <h2>Experience</h2>
             <div class="card">
-                <h3>Techlistic</h3>
-                <p>This collection of exercises is designed to help you gain practical experience working with Selenium
-                    WebDriver.</p>
-                <div class="tech-stack">
-                    <div class="tech-item" data-visible="true"> <img
-                            src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium"
-                            class="tech-icon" /> </div>
-                    <div class="tech-item" data-visible="true"> <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                            alt="JavaScript" class="tech-icon" /> </div>
-                    <div class="tech-item" data-visible="true"> <img src="https://cucumber.io/img/logo.svg"
-                            alt="Cucumber" class="tech-icon" /> </div>
-                </div> <a href="https://github.com/hasanazeerkhan/selenium-javascript-cucumber" class="github-link"
-                    target="_blank">View on GitHub →</a>
-            </div>
-            <div class="card">
-                <h3>Facebook</h3>
-                <p>Automating login to facebook page with some mock data</p>
-                <div class="tech-stack">
-                    <div class="tech-item" data-visible="true"> <img
-                            src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium"
-                            class="tech-icon" /> </div>
-                    <div class="tech-item" data-visible="true"> <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                            alt="JavaScript" class="tech-icon" /> </div>
-                </div> <a href="https://github.com/hasanazeerkhan/facebook-automation-selenium-js" class="github-link"
-                    target="_blank">View on GitHub →</a>
-            </div>
-            <div class="card">
-                <h3>Demo QA</h3>
-                <p>A comprehensive automation framework for testing the demoQA website using Playwright</p>
-                <div class="tech-stack">
-                    <div class="tech-item" data-visible="true"> <img
-                            src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium"
-                            class="tech-icon" /> </div>
-                    <div class="tech-item" data-visible="true"> <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                            alt="JavaScript" class="tech-icon" /> </div>
-                </div> <a href="https://github.com/hasanazeerkhan/demoqa-automation-selenium-js" class="github-link"
-                    target="_blank">View on GitHub →</a>
-            </div>
-            <div class="card">
-                <h3>Swag Labs</h3>
-                <p>A collection of automated tests for the popular demo websites, built using Selenium and JavaScript.
+                <div style="display: flex; align-items: center;"> <img src="img\infosys-nyn-tagline-reverse-png.png"
+                        alt="JavaScript" style="width: 40px; height: auto; margin-right: 0.5rem;">
+                    <h3 style="margin: 0;">Quality Engineering Analyst</h3>
+                </div>
+                <p class="timeline">November 2024 - Present</p>
+                <p>Developed automation frameworks using Playwright with JavaScript for newly launched financial
+                    software,
+                    increasing automation test coverage by 40%.. Conducted thorough API testing with Postman to ensure
+                    stability and prevent breakage in production environments.
+                    Ensured functional test cases were well-structured to facilitate seamless automation. Contributed
+                    significantly to test estimation and prioritization efforts, effectively minimizing backlogs within
+                    the
+                    testing team.
                 </p>
-                <div class="tech-stack">
+                <div class="skills-list">
+                    <div class="tech-item" data-visible="true"> <img
+                            src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" class="tech-icon" />
+                        Playwright </div>
+                    <div class="tech-item" data-visible="true"> <img src="https://cucumber.io/img/logo.svg"
+                            alt="Cucumber" class="tech-icon" /> Cucumber </div>
+                    <div class="tech-item" data-visible="true"> <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+                            alt="JavaScript" class="tech-icon" /> JavaScript </div> <span class="skill-tag">Functional
+                        Testing</span> <span class="skill-tag">Test planning</span>
+                </div>
+            </div>
+            <div class="card">
+                <div style="display: flex; align-items: center;"> <img src="img\zoho-logo-darkbg.svg" alt="JavaScript"
+                        style="width: 40px; height: auto; margin-right: 0.5rem;">
+                    <h3 style="margin: 0;">Member Technical Staff - QA</h3>
+                </div>
+                <p class="timeline">March 2024 - September</p>
+                <p>As a Senior Tester on the Trident team, I play a key role in our release processes. My contributions
+                    include developing comprehensive test cases, conducting competitor analysis to identify gaps, and
+                    enhancing existing testing procedures to improve bug detection. I am responsible for executing and
+                    updating our Sanity and Smoke test cases, as well as overseeing User Acceptance Testing to ensure a
+                    seamless experience for our customers. Additionally, I have hands-on experience in accessing logs
+                    and
+                    Apptics events for released products, allowing me to assess risks effectively before builds are
+                    delivered to customers.</p>
+                <div class="skills-list">
+                    <div class="tech-item" data-visible="true"> <img
+                            src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/projects.svg"
+                            alt="JavaScript" class="tech-icon" /> Zoho Projects </div> <span
+                        class="skill-tag">Functional Testing</span>
+                    <span class="skill-tag">Test planning</span> <span class="skill-tag">Bug management</span> <span
+                        class="skill-tag">Zoho Projects</span>
+                </div>
+            </div>
+            <div class="card">
+                <div style="display: flex; align-items: center;"> <img
+                        src="https://modelon.com/wp-content/uploads/2022/06/modelon-logo.svg" alt="JavaScript"
+                        style="width: 40px; height: auto; margin-right: 0.5rem;">
+                    <h3 style="margin: 0;">Test Engineer</h3>
+                </div>
+                <p class="timeline">November 2024 - Present</p>
+                <p>Executed 1,100 functional test cases per release for Modelon Impact an in house simulation
+                    application,
+                    covering regression, smoke, sanity, exploratory, and UAT for web and desktop apps, following Agile
+                    practices to ensure quality.
+                    Wrote automated test cases in JavaScript with Cypress, improving help center quality. Developed
+                    automated tests for Modelon Impact on Selenium with JavaScript, and Cucumber, integrated into
+                    Jenkins
+                    for continuous monitoring.
+                    Collaborated with cross-functional teams to streamline development and QA coordination, introducing
+                    new
+                    technologies for a more comprehensive testing approach.</p>
+                <div class="skills-list">
                     <div class="tech-item" data-visible="true"> <img
                             src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium"
-                            class="tech-icon" /> </div>
-                    <div class="tech-item" data-visible="true"> <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                            alt="JavaScript" class="tech-icon" /> </div>
-                </div> <a href="https://github.com/hasanazeerkhan/orangehrm-automation-cypress" class="github-link"
-                    target="_blank">View on GitHub →</a>
-            </div>
-            <div class="card">
-                <h3>Facebook - Login</h3>
-                <p>Automating login to facebook page with some mock data</p>
-                <div class="tech-stack">
+                            class="tech-icon" /> Selenium </div>
                     <div class="tech-item" data-visible="true"> <img src="img\Cypress_Logotype_White.svg" alt="Cypress"
-                            class="tech-icon" /> </div>
+                            class="tech-icon" /> Cypress </div>
+                    <div class="tech-item" data-visible="true"> <img
+                            src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" class="tech-icon" />
+                        Playwright </div>
+                    <div class="tech-item" data-visible="true"> <img src="https://cucumber.io/img/logo.svg"
+                            alt="Cucumber" class="tech-icon" /> Cucumber </div>
                     <div class="tech-item" data-visible="true"> <img
                             src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                            alt="JavaScript" class="tech-icon" /> </div>
-                </div> <a href="https://github.com/hasanazeerkhan/facebook-automation-cypress" class="github-link"
-                    target="_blank">View on GitHub →</a>
-            </div>
-            <div class="card">
-                <h3>Swag Labs</h3>
-                <p>Automated tests for the Swag Labs application using Cypress. The goal is to ensure the functionality
-                    and reliability of the application through automated end-to-end testing.</p>
-                <div class="tech-stack">
-                    <div class="tech-item" data-visible="true"> <img src="img\Cypress_Logotype_White.svg" alt="Cypress"
-                            class="tech-icon" /> </div>
+                            alt="JavaScript" class="tech-icon" /> JavaScript </div>
                     <div class="tech-item" data-visible="true"> <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                            alt="JavaScript" class="tech-icon" /> </div>
-                </div> <a href="https://github.com/hasanazeerkhan/swaglabs-automation-cypress" class="github-link"
-                    target="_blank">View on GitHub →</a>
-            </div>
-            <div class="card">
-                <h3>DemoQA</h3>
-                <p>This project is designed to demonstrate automated testing using the Cypress framework for the DemoQA
-                    application.</p>
-                <div class="tech-stack">
-                    <div class="tech-item" data-visible="true"> <img src="img\Cypress_Logotype_White.svg" alt="Cypress"
-                            class="tech-icon" /> </div>
+                            src="https://modelica.org/images/ma-logos/dark/m-ball.svg" alt="JavaScript"
+                            class="tech-icon" />
+                        Modelica </div>
+                    <div class="tech-item" data-visible="true"> <img src="img\Jira Software-icon-blue.svg" alt="JIRA"
+                            class="tech-icon" /> JIRA </div>
+                    <div class="tech-item" data-visible="true"> <img src="img\Git-Icon-White.svg" alt="GIT"
+                            class="tech-icon" /> GIT </div>
                     <div class="tech-item" data-visible="true"> <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                            alt="JavaScript" class="tech-icon" /> </div>
-                </div> <a href="https://github.com/hasanazeerkhan/demoqa-automation-cypress" class="github-link"
-                    target="_blank">View on GitHub →</a>
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Apache_Subversion_logo.svg/330px-Apache_Subversion_logo.svg.png"
+                            alt="SVN" class="tech-icon" /> SVN </div> <span class="skill-tag">Functional Testing</span>
+                </div>
             </div>
-            <div class="card">
-                <h3>OrangeHRM</h3>
-                <p>Automated tests for the OrangeHRM application using Cypress. The aim is to ensure the functionality
-                    and stability of the application through automated UI testing.</p>
-                <div class="tech-stack">
-                    <div class="tech-item" data-visible="true"> <img src="img\Cypress_Logotype_White.svg" alt="Cypress"
-                            class="tech-icon" /> </div>
-                    <div class="tech-item" data-visible="true"> <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                            alt="JavaScript" class="tech-icon" /> </div>
-                </div> <a href="https://github.com/hasanazeerkhan/orangehrm-automation-cypress" class="github-link"
-                    target="_blank">View on GitHub →</a>
+        </section>
+        <section id="certifications">
+            <h2>Certifications</h2>
+            <div class="projects-container">
+                <div class="achievement-card">
+                    <h3>ISTQB Foundation Level</h3>
+                    <p>International Software Testing Qualifications Board</p>
+                    <p class="timeline">Feb 2022</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>Selenium WebDriver with JavaScript</h3>
+                    <p>Udemy</p>
+                    <p class="timeline">April 2023</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>Git Essential Training: The Basics</h3>
+                    <p>LinkedIn</p>
+                    <p class="timeline">September 2022</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>Test Automation Foundations</h3>
+                    <p>LinkedIn</p>
+                    <p class="timeline">September 2022</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>Git Essentials: The Basics</h3>
+                    <p>LinkedIn</p>
+                    <p class="timeline">September 2022</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>Software Testing: Tools</h3>
+                    <p>LinkedIn</p>
+                    <p class="timeline">September 2022</p>
+                </div>
             </div>
-            <div class="card">
-                <h3>Manual Testing Resources</h3>
-                <p>This repository provides a collection of ready-to-use templates for various aspects of manual
-                    software testing</p>
-                <div class="tech-stack"> <span class="skill-tag">Functional Testing</span> </div> <a
-                    href="https://github.com/hasanazeerkhan/manual-testing" class="github-link" target="_blank">View on
-                    GitHub →</a>
+        </section>
+        <section id="achievements">
+            <h2>Achievements</h2>
+            <div class="projects-container">
+                <div class="achievement-card">
+                    <h3>Diploma of Innovation</h3>
+                    <p>June 2022</p>
+                    <p class="timeline">Modelon</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>Diploma of Engagement</h3>
+                    <p>June 2022</p>
+                    <p class="timeline">Modelon</p>
+                </div>
             </div>
-        </div>
-    </section>
-    <section id="experience">
-        <h2>Experience</h2>
-        <div class="card">
-            <div style="display: flex; align-items: center;"> <img src="img\infosys-nyn-tagline-reverse-png.png"
-                    alt="JavaScript" style="width: 40px; height: auto; margin-right: 0.5rem;">
-                <h3 style="margin: 0;">Quality Engineering Analyst</h3>
-            </div>
-            <p class="timeline">November 2024 - Present</p>
-            <p>Creating test cases, test plans and designing the testing to make sure testing is handled in proper way.
-            </p>
-            <div class="skills-list">
-                <div class="tech-item" data-visible="true"> <img src="https://playwright.dev/img/playwright-logo.svg"
-                        alt="Playwright" class="tech-icon" /> Playwright </div>
-                <div class="tech-item" data-visible="true"> <img src="https://cucumber.io/img/logo.svg" alt="Cucumber"
-                        class="tech-icon" /> Cucumber </div>
-                <div class="tech-item" data-visible="true"> <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript"
-                        class="tech-icon" /> JavaScript </div> <span class="skill-tag">Functional Testing</span> <span
-                    class="skill-tag">Test planning</span>
-            </div>
-        </div>
-        <div class="card">
-            <div style="display: flex; align-items: center;"> <img src="img\zoho-logo-darkbg.svg" alt="JavaScript"
-                    style="width: 40px; height: auto; margin-right: 0.5rem;">
-                <h3 style="margin: 0;">Member Technical Staff - QA</h3>
-            </div>
-            <p class="timeline">March 2024 - September</p>
-            <p>As a Senior tester on the Trident team, I have contributions to our release tasks and involved in
-                developing test cases, conducted competitor analysis to pinpoint gaps, and improved existing testing
-                processes to enhance bug detection. Additionally, I was responsible for executing and updating our
-                Sanity and Smoke test cases and User acceptance testing to make sure no breakage is seen when the
-                product is reaching out to customers. My role also involved hands-on experience with accessing logs and
-                Apptics events for released products, assessing risks before sending builds to customers.</p>
-            <div class="skills-list">
-                <div class="tech-item" data-visible="true"> <img
-                        src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/projects.svg" alt="JavaScript"
-                        class="tech-icon" /> Zoho Projects </div> <span class="skill-tag">Functional Testing</span>
-                <span class="skill-tag">Test planning</span> <span class="skill-tag">Bug management</span> <span
-                    class="skill-tag">Zoho Projects</span>
-            </div>
-        </div>
-        <div class="card">
-            <div style="display: flex; align-items: center;"> <img
-                    src="https://modelon.com/wp-content/uploads/2022/06/modelon-logo.svg" alt="JavaScript"
-                    style="width: 40px; height: auto; margin-right: 0.5rem;">
-                <h3 style="margin: 0;">Test Engineer</h3>
-            </div>
-            <p class="timeline">November 2024 - Present</p>
-            <p>As a member of the manual testing team, I executed approximately 1100 test cases per release for the
-                complex software Modelon Impact. This encompassed various testing types, including regression, smoke,
-                sanity, exploratory, and user acceptance testing for both web and desktop applications, adhering to
-                Agile release practices. I played a key role in designing test cases for different features, planning
-                and allocating resources, and refining existing manual test cases for automation. Additionally, I was
-                instrumental in defining workflows to improve quality control and defect management using JIRA. In
-                transitioning to automation testing, I contributed to enhancing our help center's quality by testing
-                various website components. This project involved writing over 50 test cases in JavaScript and Cypress,
-                executed over two days. Building on this success, I developed over 20 test cases for Modelon Impact
-                using Selenium, JavaScript, and Cucumber, which were integrated into Jenkins for continuous monitoring
-                of product stability with each release. I also gained experience with Docker, Modelica concepts, Modelon
-                Impact, and version control systems like Git and Svn. Furthermore, I was praised for my effective
-                collaboration with cross-functional teams, ensuring seamless coordination between development and QA. I
-                played a pivotal role in introducing new technologies and practices to the team by closely monitoring
-                testing trends, diversifying our testing approach, and ensuring a comprehensive evaluation of our
-                system's functionality.</p>
-            <div class="skills-list">
-                <div class="tech-item" data-visible="true"> <img
-                        src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium"
-                        class="tech-icon" /> Selenium </div>
-                <div class="tech-item" data-visible="true"> <img src="img\Cypress_Logotype_White.svg" alt="Cypress"
-                        class="tech-icon" /> Cypress </div>
-                <div class="tech-item" data-visible="true"> <img src="https://playwright.dev/img/playwright-logo.svg"
-                        alt="Playwright" class="tech-icon" /> Playwright </div>
-                <div class="tech-item" data-visible="true"> <img src="https://cucumber.io/img/logo.svg" alt="Cucumber"
-                        class="tech-icon" /> Cucumber </div>
-                <div class="tech-item" data-visible="true"> <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript"
-                        class="tech-icon" /> JavaScript </div>
-                <div class="tech-item" data-visible="true"> <img
-                        src="https://modelica.org/images/ma-logos/dark/m-ball.svg" alt="JavaScript" class="tech-icon" />
-                    Modelica </div>
-                <div class="tech-item" data-visible="true"> <img src="img\Jira Software-icon-blue.svg" alt="JIRA"
-                        class="tech-icon" /> JIRA </div>
-                <div class="tech-item" data-visible="true"> <img src="img\Git-Icon-White.svg" alt="GIT"
-                        class="tech-icon" /> GIT </div>
-                <div class="tech-item" data-visible="true"> <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Apache_Subversion_logo.svg/330px-Apache_Subversion_logo.svg.png"
-                        alt="SVN" class="tech-icon" /> SVN </div> <span class="skill-tag">Functional Testing</span>
-            </div>
-        </div>
-    </section>
-    <section id="certifications">
-        <h2>Certifications</h2>
-        <div class="projects-container">
-            <div class="achievement-card">
-                <h3>ISTQB Foundation Level</h3>
-                <p>International Software Testing Qualifications Board</p>
-                <p class="timeline">Feb 2022</p>
-            </div>
-            <div class="achievement-card">
-                <h3>Selenium WebDriver with JavaScript</h3>
-                <p>Udemy</p>
-                <p class="timeline">April 2023</p>
-            </div>
-            <div class="achievement-card">
-                <h3>Git Essential Training: The Basics</h3>
-                <p>LinkedIn</p>
-                <p class="timeline">September 2022</p>
-            </div>
-            <div class="achievement-card">
-                <h3>Test Automation Foundations</h3>
-                <p>LinkedIn</p>
-                <p class="timeline">September 2022</p>
-            </div>
-            <div class="achievement-card">
-                <h3>Git Essentials: The Basics</h3>
-                <p>LinkedIn</p>
-                <p class="timeline">September 2022</p>
-            </div>
-            <div class="achievement-card">
-                <h3>Software Testing: Tools</h3>
-                <p>LinkedIn</p>
-                <p class="timeline">September 2022</p>
-            </div>
-        </div>
-    </section>
-    <section id="achievements">
-        <h2>Achievements</h2>
-        <div class="projects-container">
-            <div class="achievement-card">
-                <h3>Diploma of Innovation</h3>
-                <p>June 2022</p>
-                <p class="timeline">Modelon</p>
-            </div>
-            <div class="achievement-card">
-                <h3>Diploma of Engagement</h3>
-                <p>June 2022</p>
-                <p class="timeline">Modelon</p>
-            </div>
-        </div>
-    </section>
-    </section>
-    <script>         function createMatrixBackground() { const matrixBg = document.getElementById('matrixBg'); const characters = '0123456789QCABCDEFGHIJKLMNOPQRSTUVWXYZ'; const columns = Math.floor(window.innerWidth / 20); for (let i = 0; i < columns; i++) { const character = document.createElement('div'); character.className = 'matrix-character'; character.style.left = `${i * 20}px`; character.style.animationDelay = `${Math.random() * 8}s`; character.textContent = characters[Math.floor(Math.random() * characters.length)]; matrixBg.appendChild(character); } } createMatrixBackground(); document.querySelector('.scroll-indicator').addEventListener('click', () => { document.getElementById('about').scrollIntoView({ behavior: 'smooth' }); });          // Initialize tech stack visibility         document.addEventListener('DOMContentLoaded', () => {             const techItems = document.querySelectorAll('.tech-item');             techItems.forEach(item => {                 const isVisible = item.getAttribute('data-visible') === 'true';                 item.style.display = isVisible ? 'flex' : 'none';             });         });     </script>
+        </section>
+        </section>
+        <script>         function createMatrixBackground() { const matrixBg = document.getElementById('matrixBg'); const characters = '0123456789QCABCDEFGHIJKLMNOPQRSTUVWXYZ'; const columns = Math.floor(window.innerWidth / 20); for (let i = 0; i < columns; i++) { const character = document.createElement('div'); character.className = 'matrix-character'; character.style.left = `${i * 20}px`; character.style.animationDelay = `${Math.random() * 8}s`; character.textContent = characters[Math.floor(Math.random() * characters.length)]; matrixBg.appendChild(character); } } createMatrixBackground(); document.querySelector('.scroll-indicator').addEventListener('click', () => { document.getElementById('about').scrollIntoView({ behavior: 'smooth' }); });          // Initialize tech stack visibility         document.addEventListener('DOMContentLoaded', () => {             const techItems = document.querySelectorAll('.tech-item');             techItems.forEach(item => {                 const isVisible = item.getAttribute('data-visible') === 'true';                 item.style.display = isVisible ? 'flex' : 'none';             });         });     </script>
 </body>
 <section id="blogs">
     <h2>My Blogs</h2>
@@ -880,8 +981,7 @@
             <div class="blog-content">
                 <span class="blog-category">Conference</span>
                 <h2 class="blog-title">Experience about my first offline testing conference</h2>
-                <a href="/blogs/tribeconf.html" class="github-link"
-                    target="_blank">Read full blog</a>                
+                <a href="/blogs/tribeconf.html" class="github-link" target="_blank">Read full blog</a>
                 <div class="blog-meta">
                     <span>Hasan</span>
                     <span>5 min read</span>
@@ -904,31 +1004,52 @@
         </article>
     </div>
 </section>
-<script>     
-// Project filtering
-const tagButtons = document.querySelectorAll('.tag-btn');
-        const projectCards = document.querySelectorAll('.projects-container .card');
+<section id="resume">
+    <h2>Download Resume</h2>
+    <div class="card"
+        style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+        <p style="margin-bottom: 1rem; color: #8892b0;">Want to know more about my professional journey?</p>
+        <a href="/resume/MohammedHasan.pdf" download class="github-link" style="
+            background-color: #64ffda;
+            color: #0a192f;
+            padding: 12px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-bottom: 1rem;
+        " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            Download Resume
+        </a>
+        <p style="font-size: 0.875rem; color: #8892b0;">PDF | Last Updated: February 2024</p>
+    </div>
+</section>
+<script>
+    // Project filtering
+    const tagButtons = document.querySelectorAll('.tag-btn');
+    const projectCards = document.querySelectorAll('.projects-container .card');
 
-        tagButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                tagButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
-                button.classList.add('active');
+    tagButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            tagButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            button.classList.add('active');
 
-                const selectedTag = button.getAttribute('data-tag');
-                
-                projectCards.forEach(card => {
-                    if (selectedTag === 'all') {
-                        card.style.display = 'block';
-                    } else {
-                        const techStack = card.querySelector('.tech-stack');
-                        const hasTag = techStack.innerHTML.includes(selectedTag);
-                        card.style.display = hasTag ? 'block' : 'none';
-                    }
-                });
+            const selectedTag = button.getAttribute('data-tag');
+
+            projectCards.forEach(card => {
+                if (selectedTag === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    const techStack = card.querySelector('.tech-stack');
+                    const hasTag = techStack.innerHTML.includes(selectedTag);
+                    card.style.display = hasTag ? 'block' : 'none';
+                }
             });
         });
+    });
 </script>
-    
+
 </html>
