@@ -1,1060 +1,922 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hasan</title>
-    <link rel="icon" href="\img\logo.png" type="image/x-icon">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-            transition: all 0.3s ease;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #0a192f;
-            color: #8892b0;
-            line-height: 1.6;
-        }
-
-        section {
-            min-height: 100vh;
-            padding: 2rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        section+section {
-            padding-top: 0;
-        }
-
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            margin: 0;
-            max-width: none;
-            padding: 0;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(217deg, rgba(0, 255, 0, .08), rgba(0, 255, 0, 0) 70.71%), linear-gradient(127deg, rgba(0, 255, 255, .08), rgba(0, 255, 255, 0) 70.71%), linear-gradient(336deg, rgba(0, 0, 255, .08), rgba(0, 0, 255, 0) 70.71%);
-            z-index: 0;
-        }
-
-        .matrix-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .matrix-character {
-            position: absolute;
-            color: rgba(0, 255, 0, 0.1);
-            font-family: monospace;
-            font-size: 1.2rem;
-            animation: fall 8s linear infinite;
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-
-            30% {
-                opacity: 0.5;
-            }
-
-            70% {
-                opacity: 0.2;
-            }
-
-            100% {
-                transform: translateY(100vh);
-                opacity: 0;
-            }
-        }
-
-        .container {
-            text-align: center;
-            max-width: 42rem;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-            padding: 0 1rem;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            color: #e6f1ff;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(to right, transparent, #64ffda, transparent);
-        }
-
-        .title {
-            font-size: 1.25rem;
-            color: #8892b0;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .social-links a {
-            color: #8892b0;
-            transition: color 0.2s ease;
-        }
-
-        .social-links a:hover {
-            color: #64ffda;
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #64ffda;
-            text-align: center;
-            animation: bounce 2s infinite;
-            cursor: pointer;
-            z-index: 2;
-        }
-
-        .scroll-text {
-            font-size: 0.875rem;
-            margin-bottom: 0.5rem;
-            color: #8892b0;
-        }
-
-        @keyframes bounce {
-
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateY(0);
-            }
-
-            40% {
-                transform: translateY(-10px);
-            }
-
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-
-        /* Projects Grid Layout */
-        .projects-container,
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            padding: 0.5rem;
-            width: 100%;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.75rem;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(100, 255, 218, 0.1);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: #64ffda;
-            box-shadow: 0 8px 30px rgba(100, 255, 218, 0.1);
-        }
-
-        .card h3 {
-            color: #64ffda;
-            margin-bottom: 1rem;
-        }
-
-        .company-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .company-logo {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
-            background: white;
-            padding: 4px;
-            border-radius: 4px;
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-
-        .tech-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.5rem 1rem;
-            border-radius: 999px;
-            font-size: 0.875rem;
-        }
-
-        .tech-icon {
-            width: 20px;
-            height: 20px;
-            object-fit: contain;
-        }
-
-        .timeline {
-            color: #64ffda;
-            font-size: 0.875rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .skill-tag {
-            background: rgba(100, 255, 218, 0.1);
-            color: #64ffda;
-            padding: 0.25rem 0.75rem;
-            border-radius: 999px;
-            font-size: 0.875rem;
-        }
-
-        .github-link {
-            display: inline-block;
-            color: #64ffda;
-            text-decoration: none;
-            margin-top: 1rem;
-            transition: color 0.2s ease;
-        }
-
-        .github-link:hover {
-            color: #fff;
-        }
-
-        .achievement-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            transition: transform 0.3s ease;
-            /* border-left: 4px solid #64ffda; */
-        }
-
-        .achievement-card h3 {
-            color: #64ffda;
-            margin-bottom: 0.5rem;
-        }
-
-        .achievement-card:hover {
-            transform: translateY(-5px);
-            border-color: #64ffda;
-            box-shadow: 0 8px 30px rgba(100, 255, 218, 0.1);
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 1024px) {
-            .projects-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            section {
-                padding: 1.5rem 1rem;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            h2 {
-                font-size: 2rem;
-                margin-bottom: 2rem;
-            }
-
-            .projects-container {
-                grid-template-columns: 1fr;
-            }
-
-            .social-links {
-                gap: 1rem;
-            }
-
-            .tech-stack {
-                gap: 0.5rem;
-            }
-
-            .tech-item {
-                padding: 0.25rem 0.75rem;
-            }
-        }
-
-        .subtitle {
-            color: #8892b0;
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-        }
-
-        .search-container {
-            max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 12px 20px;
-            padding-left: 45px;
-            border: 2px solid rgba(255, 255, 255, 0.05);
-            border-radius: 25px;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            color: #ccd6f6;
-            transition: all 0.3s;
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: #64ffda;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .search-input::placeholder {
-            color: #8892b0;
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #64ffda;
-        }
-
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            transition: transform 0.3s ease;
-            height: 100%;
-        }
-
-        .blog-card {
-            border: 1px solid rgba(100, 255, 218, 0.1);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-            border-color: #64ffda;
-            box-shadow: 0 8px 30px rgba(100, 255, 218, 0.1);
-        }
-
-        .blog-image {
-            width: 100%;
-            height: 200px;
-            background-color: rgba(255, 255, 255, 0.05);
-            background-size: cover;
-            background-position: center;
-        }
-
-        .blog-content {
-            padding: 20px;
-        }
-
-        .blog-category {
-            background-color: rgba(100, 255, 218, 0.1);
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            color: #64ffda;
-            display: inline-block;
-            margin-bottom: 10px;
-            border: 1px solid #64ffda;
-        }
-
-        .blog-title {
-            text-align: left;
-            font-size: 1.25rem;
-            color: #ccd6f6;
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-
-        .blog-excerpt {
-            color: #8892b0;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-        }
-
-        .blog-meta {
-            display: flex;
-            justify-content: space-between;
-            color: #8892b0;
-            font-size: 0.85rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 15px;
-        }
-
-        .tag-filter {
-            display: flex;
-            gap: 1rem;
-            margin: 2rem 0;
-            justify-content: center;
-        }
-
-        .tag-btn {
-            background: rgba(100, 255, 218, 0.1);
-            color: #64ffda;
-            border: 1px solid #64ffda;
-            padding: 0.5rem 1rem;
-            border-radius: 999px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .tag-btn.active {
-            background: #64ffda;
-            color: #0a192f;
-        }
-
-        .tag-btn:hover {
-            background: rgba(100, 255, 218, 0.2);
-        }
-
-        /* Update blog grid to match projects grid */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 40px;
-        }
-
-        @media (max-width: 1024px) {
-            .blog-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .about-content {
-            display: flex;
-            align-items: flex-start;
-            gap: 2rem;
-        }
-
-        .about-images {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            min-width: 150px;
-        }
-
-        .about-image {
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 2px solid #64ffda;
-            transition: all 0.3s ease;
-            opacity: 0.7;
-        }
-
-        .about-image:hover {
-            transform: scale(1.05);
-            opacity: 1;
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-paragraph {
-            color: #8892b0;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-            font-size: 1rem;
-        }
-
-        .highlight {
-            color: #64ffda;
-            font-weight: 500;
-        }
-
-        @media (max-width: 768px) {
-            .about-content {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .about-images {
-                flex-direction: row;
-                max-width: 100%;
-                justify-content: center;
-                margin-bottom: 1rem;
-            }
-
-            .about-image {
-                width: 100px;
-                height: 100px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohammed Hasan - SDET</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>/* ─── TOKENS ─────────────────────────────────────────── */
+:root {
+  --bg:         #0d0f14;
+  --bg-alt:     #111318;
+  --surface:    #161a23;
+  --border:     #1e2330;
+  --muted:      #4a5168;
+  --subtle:     #6b7599;
+  --body:       #b8c0d8;
+  --heading:    #e8ecf5;
+  --accent:     #4f9cf9;
+  --accent-dim: rgba(79, 156, 249, 0.12);
+
+  --font-sans:  'Inter', system-ui, sans-serif;
+  --font-mono:  'JetBrains Mono', monospace;
+
+  --radius:     6px;
+  --container:  1100px;
+}
+
+/* ─── RESET ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--body);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+img { display: block; max-width: 100%; }
+
+/* ─── UTILITIES ──────────────────────────────────────── */
+.mono    { font-family: var(--font-mono); }
+.accent  { color: var(--accent); }
+.muted   { color: var(--muted); }
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ─── NAV ────────────────────────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 2.5rem;
+  background: rgba(13, 15, 20, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--heading);
+  letter-spacing: 0.05em;
+}
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+.nav-links a {
+  font-size: 0.85rem;
+  color: var(--subtle);
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--heading); }
+
+/* ─── HERO ───────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8rem 2rem 4rem;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+.hero-eyebrow {
+  font-size: 0.8rem;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  margin-bottom: 1.5rem;
+}
+.hero-name {
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 600;
+  color: var(--heading);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.75rem;
+}
+.hero-tagline {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: var(--heading);
+  font-weight: 400;
+  max-width: 600px;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+.hero-sub {
+  font-size: 0.95rem;
+  color: var(--subtle);
+  max-width: 500px;
+  margin-bottom: 2.5rem;
+}
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 5rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.6rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: #6aaaff;
+  transform: translateY(-1px);
+}
+.btn-ghost {
+  border: 1px solid var(--border);
+  color: var(--body);
+}
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Stats row */
+.hero-stat-row {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+}
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.stat-num {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  color: var(--heading);
+  font-weight: 500;
+}
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+/* ─── SECTIONS ───────────────────────────────────────── */
+.section {
+  padding: 6rem 0;
+}
+.section-alt {
+  background: var(--bg-alt);
+}
+.section-label {
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.section-title {
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  color: var(--heading);
+  font-weight: 600;
+  margin-bottom: 3rem;
+  letter-spacing: -0.01em;
+}
+
+/* ─── ABOUT ──────────────────────────────────────────── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 4rem;
+  align-items: start;
+}
+.about-text h2 {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  color: var(--heading);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.about-text p {
+  margin-bottom: 1rem;
+  color: var(--body);
+  font-size: 0.97rem;
+}
+.about-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  padding: 1.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.aside-label {
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+.aside-block p {
+  font-size: 0.9rem;
+  color: var(--body);
+  line-height: 1.5;
+}
+
+/* ─── TIMELINE ───────────────────────────────────────── */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.timeline-item {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 2.5rem;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.timeline-item:last-child { border-bottom: none; }
+.timeline-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 0.2rem;
+}
+.timeline-date {
+  font-size: 0.78rem;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+.timeline-domain {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  width: fit-content;
+}
+.domain-banking { background: rgba(79,156,249,0.15); color: var(--accent); }
+.domain-saas    { background: rgba(100,200,120,0.12); color: #64c878; }
+.domain-eng     { background: rgba(200,150,80,0.12); color: #c8a050; }
+
+.timeline-body h3 {
+  font-size: 1.15rem;
+  color: var(--heading);
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+.timeline-company {
+  font-size: 0.85rem;
+  color: var(--subtle);
+  margin-bottom: 1.25rem;
+}
+.timeline-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.timeline-bullets li {
+  font-size: 0.9rem;
+  color: var(--body);
+  padding-left: 1rem;
+  position: relative;
+}
+.timeline-bullets li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.timeline-bullets strong { color: var(--heading); font-weight: 500; }
+
+/* ─── SKILLS ─────────────────────────────────────────── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.skill-group-label {
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.tag {
+  padding: 0.35rem 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.82rem;
+  color: var(--body);
+  transition: border-color 0.2s, color 0.2s;
+}
+.tag:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.tag-sm {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.72rem;
+}
+
+/* ─── PROJECTS ───────────────────────────────────────── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.project-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+.project-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.project-icon {
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+}
+.project-card h3 {
+  font-size: 1rem;
+  color: var(--heading);
+  font-weight: 600;
+  line-height: 1.3;
+}
+.project-card p {
+  font-size: 0.87rem;
+  color: var(--body);
+  flex: 1;
+  line-height: 1.6;
+}
+.project-link {
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s;
+}
+.project-link:hover { opacity: 0.7; }
+
+/* ─── AWARDS ─────────────────────────────────────────── */
+.awards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.award-item {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.award-item:last-child { border-bottom: none; }
+.award-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 0.2rem;
+}
+.award-year {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.award-badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  background: var(--accent-dim);
+  border: 1px solid rgba(79,156,249,0.2);
+  border-radius: 3px;
+  font-size: 0.7rem;
+  color: var(--accent);
+  width: fit-content;
+}
+.award-badge:not(.accent) {
+  background: rgba(255,255,255,0.04);
+  border-color: var(--border);
+  color: var(--subtle);
+}
+.award-right h4 {
+  font-size: 0.97rem;
+  color: var(--heading);
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.award-right p {
+  font-size: 0.87rem;
+  color: var(--body);
+}
+
+/* ─── CONTACT ────────────────────────────────────────── */
+.contact-container {
+  max-width: 700px;
+}
+.contact-sub {
+  font-size: 1rem;
+  color: var(--subtle);
+  margin-bottom: 2.5rem;
+  max-width: 480px;
+}
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--body);
+  transition: color 0.2s;
+}
+.contact-link:first-child { border-top: 1px solid var(--border); }
+.contact-link:hover { color: var(--accent); }
+.contact-link .mono {
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  min-width: 70px;
+  transition: color 0.2s;
+}
+.contact-link:hover .mono { color: var(--accent); }
+.contact-link span:last-child { font-size: 0.92rem; }
+
+/* ─── FOOTER ─────────────────────────────────────────── */
+.footer {
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--border);
+}
+.footer .container {
+  display: flex;
+  justify-content: center;
+}
+.footer .mono {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+/* ─── FADE IN ON SCROLL ──────────────────────────────── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────── */
+@media (max-width: 900px) {
+  .about-grid          { grid-template-columns: 1fr; }
+  .skills-grid         { grid-template-columns: repeat(2, 1fr); }
+  .projects-grid       { grid-template-columns: 1fr; }
+  .timeline-item       { grid-template-columns: 1fr; gap: 0.75rem; }
+
+  .timeline-meta       { flex-direction: row; align-items: center; flex-wrap: wrap; }
+  .award-item          { grid-template-columns: 1fr; gap: 0.75rem; }
+  .award-left          { flex-direction: row; align-items: center; }
+  .nav-links           { gap: 1.25rem; }
+}
+@media (max-width: 600px) {
+  .nav                 { padding: 1rem 1.25rem; }
+  .nav-links           { display: none; }
+  .hero                { padding: 7rem 1.25rem 3rem; }
+  .section             { padding: 4rem 0; }
+  .container           { padding: 0 1.25rem; }
+  .skills-grid         { grid-template-columns: 1fr; }
+  .hero-stat-row       { gap: 1.75rem; }
+  .projects-grid       { grid-template-columns: 1fr; }
+}
+
+/* ─── REDUCED MOTION ─────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in             { transition: none; }
+  html                 { scroll-behavior: auto; }
+}
+</style>
 </head>
-
 <body>
-    <section class="hero">
-        <div class="matrix-bg" id="matrixBg"></div>
-        <div class="container">
-            <h1>Mohammed Hasan</h1>
-            <p class="title">Software Test Engineer</p>
-            <div class="social-links"> <a href="https://github.com/hasanazeerkhan" target="_blank"
-                    rel="noopener noreferrer"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path
-                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                        </path>
-                    </svg> </a> <a href="https://linkedin.com/in/hasanazeerkhan" target="_blank"
-                    rel="noopener noreferrer"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                        <rect x="2" y="9" width="4" height="12"></rect>
-                        <circle cx="4" cy="4" r="2"></circle>
-                    </svg> </a> <a href="https://twitter.com/imnot_hasan" target="_blank" rel="noopener noreferrer">
-                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                            d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
-                        </path>
-                    </svg> </a>  -->
-                    <!-- <a href="https://instagram.com/imnot_hasan" target="_blank" rel="noopener noreferrer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                    </svg>  -->
-                </a> 
-                </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="scroll-text">Scroll Down</div> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
-            </svg>
-        </div>
-    </section>
-    <<section id="about">
-        <h2>About Me</h2>
-        <div class="card">
-            <div class="about-content">
-                <!-- <div class="about-images">
-                    <img src="/img/imgOne.jpg" alt="Hasan at work" class="about-image">
-                    <img src="/api/placeholder/150/150" alt="Testing conference" class="about-image">
-                    <img src="/api/placeholder/150/150" alt="Team collaboration" class="about-image">
-                </div> -->
-                <div class="about-text">
-                    <p class="about-paragraph">Hello! I'm Mohammed <span class="highlight">Hasan</span>, Glad to have
-                        you here. I am a passionate Software Test Engineer with a
-                        keen eye for quality and a drive for continuous improvement.</p>
 
-                    <p class="about-paragraph">My expertise lies in bridging the gap between manual and automated
-                        testing, transforming complex testing challenges into streamlined, efficient processes. With
-                        over 4 years of experience, I've developed a holistic approach to software quality assurance
-                        that goes beyond traditional testing methodologies.</p>
+  <!-- NAV -->
+  <nav class="nav">
+    <span class="nav-logo">MH<span class="accent">.</span></span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-                    <p class="about-paragraph">Throughout my career, I've been instrumental in managing extensive test
-                        cases across various domains, with a track record of handling over 1,100 test cases per release.
-                        My approach combines meticulous manual testing with cutting-edge automation techniques,
-                        leveraging tools like <span class="highlight">Playwright, Selenium, and Cypress</span> to ensure
-                        comprehensive test coverage.</p>
-
-                    <p class="about-paragraph">What sets me apart is my ability to collaborate effectively with
-                        cross-functional teams, translating technical insights into actionable improvements. I'm not
-                        just a tester, but an <span class="highlight">innovation catalyst</span> who continuously seeks
-                        to enhance product quality and streamline testing practices. My <span class="highlight">passion
-                            for testing</span> sets me apart from other testers while going to an extra mile</p>
-                </div>
-            </div>
-        </div>
-        </section>
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="tag-filter">
-                <button class="tag-btn active" data-tag="all">All</button>
-                <button class="tag-btn" data-tag="Selenium">Selenium</button>
-                <button class="tag-btn" data-tag="Cypress">Cypress</button>
-                <button class="tag-btn" data-tag="Playwright">Playwright</button>
-            </div>
-            <div class="projects-container">
-                <div class="card">
-                    <h3>Bank Of India</h3>
-                    <p>A Page Object Model framework to test the website Bank Of India. As a realtime example there are
-                        lot
-                        of dynamic elements have been handled here</p>
-                    <div class="tech-stack">
-                        <div class="tech-item" data-visible="true"> <img
-                                src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright"
-                                class="tech-icon" />
-                        </div>
-                        <div class="tech-item" data-visible="true"> <img
-                                src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                                alt="JavaScript" class="tech-icon" /> </div>
-                    </div> <a href="https://github.com/hasanazeerkhan/playwright-bankOfIndia" class="github-link"
-                        target="_blank">View on GitHub →</a>
-                </div>
-                <div class="card">
-                    <h3>Demo QA</h3>
-                    <p>A comprehensive automation framework for testing the demoQA website using Playwright</p>
-                    <div class="tech-stack">
-                        <div class="tech-item" data-visible="true"> <img
-                                src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright"
-                                class="tech-icon" />
-                        </div>
-                        <div class="tech-item" data-visible="true"> <img
-                                src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                                alt="JavaScript" class="tech-icon" /> </div>
-                    </div> <a href="https://github.com/hasanazeerkhan/demoQA-automation-playwright" class="github-link"
-                        target="_blank">View on GitHub →</a>
-                </div>
-                <div class="card">
-                    <h3>Techlistic</h3>
-                    <p>This collection of exercises is designed to help you gain practical experience working with
-                        Selenium
-                        WebDriver.</p>
-                    <div class="tech-stack">
-                        <div class="tech-item" data-visible="true"> <img
-                                src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium"
-                                class="tech-icon" /> </div>
-                        <div class="tech-item" data-visible="true"> <img
-                                src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                                alt="JavaScript" class="tech-icon" /> </div>
-                        <div class="tech-item" data-visible="true"> <img src="https://cucumber.io/img/logo.svg"
-                                alt="Cucumber" class="tech-icon" /> </div>
-                    </div> <a href="https://github.com/hasanazeerkhan/selenium-javascript-cucumber" class="github-link"
-                        target="_blank">View on GitHub →</a>
-                </div>
-                <div class="card">
-                    <h3>Facebook</h3>
-                    <p>Automating login to facebook page with some mock data</p>
-                    <div class="tech-stack">
-                        <div class="tech-item" data-visible="true"> <img
-                                src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium"
-                                class="tech-icon" /> </div>
-                        <div class="tech-item" data-visible="true"> <img
-                                src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                                alt="JavaScript" class="tech-icon" /> </div>
-                    </div> <a href="https://github.com/hasanazeerkhan/facebook-automation-selenium-js"
-                        class="github-link" target="_blank">View on GitHub →</a>
-                </div>
-                <div class="card">
-                    <h3>Demo QA</h3>
-                    <p>A comprehensive automation framework for testing the demoQA website using Playwright</p>
-                    <div class="tech-stack">
-                        <div class="tech-item" data-visible="true"> <img
-                                src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium"
-                                class="tech-icon" /> </div>
-                        <div class="tech-item" data-visible="true"> <img
-                                src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                                alt="JavaScript" class="tech-icon" /> </div>
-                    </div> <a href="https://github.com/hasanazeerkhan/demoqa-automation-selenium-js" class="github-link"
-                        target="_blank">View on GitHub →</a>
-                </div>
-                <div class="card">
-                    <h3>Swag Labs</h3>
-                    <p>A collection of automated tests for the popular demo websites, built using Selenium and
-                        JavaScript.
-                    </p>
-                    <div class="tech-stack">
-                        <div class="tech-item" data-visible="true"> <img
-                                src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium"
-                                class="tech-icon" /> </div>
-                        <div class="tech-item" data-visible="true"> <img
-                                src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                                alt="JavaScript" class="tech-icon" /> </div>
-                    </div> <a href="https://github.com/hasanazeerkhan/orangehrm-automation-cypress" class="github-link"
-                        target="_blank">View on GitHub →</a>
-                </div>
-                <div class="card">
-                    <h3>Facebook - Login</h3>
-                    <p>Automating login to facebook page with some mock data</p>
-                    <div class="tech-stack">
-                        <div class="tech-item" data-visible="true"> <img src="img\Cypress_Logotype_White.svg"
-                                alt="Cypress" class="tech-icon" /> </div>
-                        <div class="tech-item" data-visible="true"> <img
-                                src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                                alt="JavaScript" class="tech-icon" /> </div>
-                    </div> <a href="https://github.com/hasanazeerkhan/facebook-automation-cypress" class="github-link"
-                        target="_blank">View on GitHub →</a>
-                </div>
-                <div class="card">
-                    <h3>Swag Labs</h3>
-                    <p>Automated tests for the Swag Labs application using Cypress. The goal is to ensure the
-                        functionality
-                        and reliability of the application through automated end-to-end testing.</p>
-                    <div class="tech-stack">
-                        <div class="tech-item" data-visible="true"> <img src="img\Cypress_Logotype_White.svg"
-                                alt="Cypress" class="tech-icon" /> </div>
-                        <div class="tech-item" data-visible="true"> <img
-                                src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                                alt="JavaScript" class="tech-icon" /> </div>
-                    </div> <a href="https://github.com/hasanazeerkhan/swaglabs-automation-cypress" class="github-link"
-                        target="_blank">View on GitHub →</a>
-                </div>
-                <div class="card">
-                    <h3>DemoQA</h3>
-                    <p>This project is designed to demonstrate automated testing using the Cypress framework for the
-                        DemoQA
-                        application.</p>
-                    <div class="tech-stack">
-                        <div class="tech-item" data-visible="true"> <img src="img\Cypress_Logotype_White.svg"
-                                alt="Cypress" class="tech-icon" /> </div>
-                        <div class="tech-item" data-visible="true"> <img
-                                src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                                alt="JavaScript" class="tech-icon" /> </div>
-                    </div> <a href="https://github.com/hasanazeerkhan/demoqa-automation-cypress" class="github-link"
-                        target="_blank">View on GitHub →</a>
-                </div>
-                <div class="card">
-                    <h3>OrangeHRM</h3>
-                    <p>Automated tests for the OrangeHRM application using Cypress. The aim is to ensure the
-                        functionality
-                        and stability of the application through automated UI testing.</p>
-                    <div class="tech-stack">
-                        <div class="tech-item" data-visible="true"> <img src="img\Cypress_Logotype_White.svg"
-                                alt="Cypress" class="tech-icon" /> </div>
-                        <div class="tech-item" data-visible="true"> <img
-                                src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                                alt="JavaScript" class="tech-icon" /> </div>
-                    </div> <a href="https://github.com/hasanazeerkhan/orangehrm-automation-cypress" class="github-link"
-                        target="_blank">View on GitHub →</a>
-                </div>
-                <div class="card">
-                    <h3>Manual Testing Resources</h3>
-                    <p>This repository provides a collection of ready-to-use templates for various aspects of manual
-                        software testing</p>
-                    <div class="tech-stack"> <span class="skill-tag">Functional Testing</span> </div> <a
-                        href="https://github.com/hasanazeerkhan/manual-testing" class="github-link" target="_blank">View
-                        on
-                        GitHub →</a>
-                </div>
-            </div>
-        </section>
-        <section id="experience">
-            <h2>Experience</h2>
-            <div class="card">
-                <div style="display: flex; align-items: center;"> <img src="img\infosys-nyn-tagline-reverse-png.png"
-                        alt="JavaScript" style="width: 40px; height: auto; margin-right: 0.5rem;">
-                    <h3 style="margin: 0;">Quality Engineering Analyst</h3>
-                </div>
-                <p class="timeline">November 2024 - Present</p>
-                <p>Developed automation frameworks using Playwright with JavaScript for newly launched financial
-                    software,
-                    increasing automation test coverage by 40%.. Conducted thorough API testing with Postman to ensure
-                    stability and prevent breakage in production environments.
-                    Ensured functional test cases were well-structured to facilitate seamless automation. Contributed
-                    significantly to test estimation and prioritization efforts, effectively minimizing backlogs within
-                    the
-                    testing team.
-                </p>
-                <div class="skills-list">
-                    <div class="tech-item" data-visible="true"> <img
-                            src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" class="tech-icon" />
-                        Playwright </div>
-                    <div class="tech-item" data-visible="true"> <img src="https://cucumber.io/img/logo.svg"
-                            alt="Cucumber" class="tech-icon" /> Cucumber </div>
-                    <div class="tech-item" data-visible="true"> <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                            alt="JavaScript" class="tech-icon" /> JavaScript </div> <span class="skill-tag">Functional
-                        Testing</span> <span class="skill-tag">Test planning</span>
-                </div>
-            </div>
-            <div class="card">
-                <div style="display: flex; align-items: center;"> <img src="img\zoho-logo-darkbg.svg" alt="JavaScript"
-                        style="width: 40px; height: auto; margin-right: 0.5rem;">
-                    <h3 style="margin: 0;">Member Technical Staff - QA</h3>
-                </div>
-                <p class="timeline">March 2024 - September 2024</p>
-                <p>As a Senior Tester on the Trident team, I play a key role in our release processes. My contributions
-                    include developing comprehensive test cases, conducting competitor analysis to identify gaps, and
-                    enhancing existing testing procedures to improve bug detection. I am responsible for executing and
-                    updating our Sanity and Smoke test cases, as well as overseeing User Acceptance Testing to ensure a
-                    seamless experience for our customers. Additionally, I have hands-on experience in accessing logs
-                    and
-                    Apptics events for released products, allowing me to assess risks effectively before builds are
-                    delivered to customers.</p>
-                <div class="skills-list">
-                    <div class="tech-item" data-visible="true"> <img
-                            src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/projects.svg"
-                            alt="JavaScript" class="tech-icon" /> Zoho Projects </div> <span
-                        class="skill-tag">Functional Testing</span>
-                    <span class="skill-tag">Test planning</span> <span class="skill-tag">Bug management</span> <span
-                        class="skill-tag">Zoho Projects</span>
-                </div>
-            </div>
-            <div class="card">
-                <div style="display: flex; align-items: center;"> <img
-                        src="https://modelon.com/wp-content/uploads/2022/06/modelon-logo.svg" alt="JavaScript"
-                        style="width: 40px; height: auto; margin-right: 0.5rem;">
-                    <h3 style="margin: 0;">Test Engineer</h3>
-                </div>
-                <p class="timeline">August 2020 - February 2024</p>
-                <p>Executed 1,100 functional test cases per release for Modelon Impact an in house simulation
-                    application,
-                    covering regression, smoke, sanity, exploratory, and UAT for web and desktop apps, following Agile
-                    practices to ensure quality.
-                    Wrote automated test cases in JavaScript with Cypress, improving help center quality. Developed
-                    automated tests for Modelon Impact on Selenium with JavaScript, and Cucumber, integrated into
-                    Jenkins
-                    for continuous monitoring.
-                    Collaborated with cross-functional teams to streamline development and QA coordination, introducing
-                    new
-                    technologies for a more comprehensive testing approach.</p>
-                <div class="skills-list">
-                    <div class="tech-item" data-visible="true"> <img
-                            src="https://www.selenium.dev/images/selenium_logo_square_green.png" alt="Selenium"
-                            class="tech-icon" /> Selenium </div>
-                    <div class="tech-item" data-visible="true"> <img src="img\Cypress_Logotype_White.svg" alt="Cypress"
-                            class="tech-icon" /> Cypress </div>
-                    <div class="tech-item" data-visible="true"> <img
-                            src="https://playwright.dev/img/playwright-logo.svg" alt="Playwright" class="tech-icon" />
-                        Playwright </div>
-                    <div class="tech-item" data-visible="true"> <img src="https://cucumber.io/img/logo.svg"
-                            alt="Cucumber" class="tech-icon" /> Cucumber </div>
-                    <div class="tech-item" data-visible="true"> <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
-                            alt="JavaScript" class="tech-icon" /> JavaScript </div>
-                    <div class="tech-item" data-visible="true"> <img
-                            src="https://modelica.org/images/ma-logos/dark/m-ball.svg" alt="JavaScript"
-                            class="tech-icon" />
-                        Modelica </div>
-                    <div class="tech-item" data-visible="true"> <img src="img\Jira Software-icon-blue.svg" alt="JIRA"
-                            class="tech-icon" /> JIRA </div>
-                    <div class="tech-item" data-visible="true"> <img src="img\Git-Icon-White.svg" alt="GIT"
-                            class="tech-icon" /> GIT </div>
-                    <div class="tech-item" data-visible="true"> <img
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Apache_Subversion_logo.svg/330px-Apache_Subversion_logo.svg.png"
-                            alt="SVN" class="tech-icon" /> SVN </div> <span class="skill-tag">Functional Testing</span>
-                </div>
-            </div>
-        </section>
-        <section id="certifications">
-            <h2>Certifications</h2>
-            <div class="projects-container">
-                <div class="achievement-card">
-                    <h3>ISTQB Foundation Level</h3>
-                    <p>International Software Testing Qualifications Board</p>
-                    <p class="timeline">Feb 2022</p>
-                </div>
-                <div class="achievement-card">
-                    <h3>Selenium WebDriver with JavaScript</h3>
-                    <p>Udemy</p>
-                    <p class="timeline">April 2023</p>
-                </div>
-                <div class="achievement-card">
-                    <h3>Git Essential Training: The Basics</h3>
-                    <p>LinkedIn</p>
-                    <p class="timeline">September 2022</p>
-                </div>
-                <div class="achievement-card">
-                    <h3>Test Automation Foundations</h3>
-                    <p>LinkedIn</p>
-                    <p class="timeline">September 2022</p>
-                </div>
-                <div class="achievement-card">
-                    <h3>Git Essentials: The Basics</h3>
-                    <p>LinkedIn</p>
-                    <p class="timeline">September 2022</p>
-                </div>
-                <div class="achievement-card">
-                    <h3>Software Testing: Tools</h3>
-                    <p>LinkedIn</p>
-                    <p class="timeline">September 2022</p>
-                </div>
-            </div>
-        </section>
-        <section id="achievements">
-            <h2>Achievements</h2>
-            <div class="projects-container">
-                <div class="achievement-card">
-                    <h3>Diploma of Innovation</h3>
-                    <p>June 2022</p>
-                    <p class="timeline">Modelon</p>
-                </div>
-                <div class="achievement-card">
-                    <h3>Diploma of Engagement</h3>
-                    <p>June 2022</p>
-                    <p class="timeline">Modelon</p>
-                </div>
-            </div>
-        </section>
-        </section>
-        <script>         function createMatrixBackground() { const matrixBg = document.getElementById('matrixBg'); const characters = '0123456789QCABCDEFGHIJKLMNOPQRSTUVWXYZ'; const columns = Math.floor(window.innerWidth / 20); for (let i = 0; i < columns; i++) { const character = document.createElement('div'); character.className = 'matrix-character'; character.style.left = `${i * 20}px`; character.style.animationDelay = `${Math.random() * 8}s`; character.textContent = characters[Math.floor(Math.random() * characters.length)]; matrixBg.appendChild(character); } } createMatrixBackground(); document.querySelector('.scroll-indicator').addEventListener('click', () => { document.getElementById('about').scrollIntoView({ behavior: 'smooth' }); });          // Initialize tech stack visibility         document.addEventListener('DOMContentLoaded', () => {             const techItems = document.querySelectorAll('.tech-item');             techItems.forEach(item => {                 const isVisible = item.getAttribute('data-visible') === 'true';                 item.style.display = isVisible ? 'flex' : 'none';             });         });     </script>
-</body>
-<section id="blogs">
-    <h2>My Blogs</h2>
-    <div class="blog-grid">
-        <!-- Blog cards remain the same -->
-        <article class="blog-card">
-            <div class="blog-image" style="background-image: url('/api/placeholder/400/200')"></div>
-            <div class="blog-content">
-                <span class="blog-category">Conference</span>
-                <h2 class="blog-title">Experience about my first offline testing conference</h2>
-                <a href="/blogs/tribeconf.html" class="github-link" target="_blank">Read full blog</a>
-                <div class="blog-meta">
-                    <span>Hasan</span>
-                    <span>5 min read</span>
-                </div>
-            </div>
-        </article>
-
-        <article class="blog-card">
-            <div class="blog-image" style="background-image: url('/api/placeholder/400/200')"></div>
-            <div class="blog-content">
-                <span class="blog-category">WIP</span>
-                <h2 class="blog-title">Contents for the blog is under progress...</h2>
-                <!-- <a href="/blog.html" class="github-link"
-                    target="_blank">Read full blog</a>                 -->
-                <div class="blog-meta">
-                    <span>Hasan</span>
-                    <span>2 min read</span>
-                </div>
-            </div>
-        </article>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <p class="hero-eyebrow"><span class="mono">~/sdet</span></p>
+      <h1 class="hero-name">Mohammed<br />Hasan</h1>
+      <p class="hero-tagline">I build automation frameworks that actually catch bugs - not just generate reports.</p>
+      <p class="hero-sub">5+ years across core banking, SaaS, and engineering simulation. Playwright · BDD · CI/CD.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Get in touch</a>
+        <a href="#experience" class="btn btn-ghost">See my work</a>
+      </div>
     </div>
-</section>
-<section id="resume">
-    <h2>Download Resume</h2>
-    <div class="card"
-        style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
-        <p style="margin-bottom: 1rem; color: #8892b0;">Want to know more about my professional journey?</p>
-        <a href="/resume/MohammedHasan.pdf" download class="github-link" style="
-            background-color: #64ffda;
-            color: #0a192f;
-            padding: 12px 24px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            display: inline-block;
-            margin-bottom: 1rem;
-        " onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-            Download Resume
+    <div class="hero-stat-row">
+      <div class="hero-stat">
+        <span class="stat-num">45<span class="accent">→</span>87%</span>
+        <span class="stat-label">Coverage at ANZ</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-num">400+</span>
+        <span class="stat-label">Test cases audited with LLM</span>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Frameworks built from zero</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <p class="section-label mono">About</p>
+      <div class="about-grid">
+        <div class="about-text">
+          <h2>Mechanical engineer turned test architect.</h2>
+          <p>I started with thermodynamics and simulation software before pivoting into software quality - which means I approach test design the way an engineer approaches a system: understand failure modes first, then build coverage around them.</p>
+          <p>Over five years I've built automation suites from scratch at three companies, each in a different domain. Right now at Infosys I'm running E2E automation for ANZ's core banking platform - and experimenting with LLM-assisted test optimization before it became a talking point.</p>
+          <p>I'm looking for a role where framework design and quality strategy are treated as engineering work, not an afterthought.</p>
+        </div>
+        <div class="about-aside">
+          <div class="aside-block">
+            <p class="aside-label mono">Currently</p>
+            <p>Quality Engineering Analyst<br /><span class="accent">Infosys → ANZ Banking</span></p>
+          </div>
+          <div class="aside-block">
+            <p class="aside-label mono">Based in</p>
+            <p>Chennai / Bangalore, India</p>
+          </div>
+          <div class="aside-block">
+            <p class="aside-label mono">Certified</p>
+            <p>ISTQB CTFL - #111668</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section section-alt" id="experience">
+    <div class="container">
+      <p class="section-label mono">Experience</p>
+      <h2 class="section-title">Where I've worked</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="mono timeline-date">Nov 2024 - Present</span>
+            <span class="timeline-domain domain-banking">Core Banking</span>
+          </div>
+          <div class="timeline-body">
+            <h3>Quality Engineering Analyst</h3>
+            <p class="timeline-company">Infosys <span class="muted">→ ANZ Banking Platform</span></p>
+            <ul class="timeline-bullets">
+              <li>Built a Playwright + Cucumber BDD framework from scratch covering 150+ critical user journeys across payments, transfers, and loan processing.</li>
+              <li>Drove automation coverage from <strong>45% to 87%</strong> over 9 months through risk-prioritised scenario selection and a shared component library.</li>
+              <li>Integrated the regression suite into Codefresh CI - shrinking feedback loop from next-day batch runs to same-day validation.</li>
+              <li>Pioneered LLM-assisted test case review to audit a 400-case legacy suite, eliminating duplicate coverage. Now a team-wide practice.</li>
+              <li>Led release quality reviews presenting defect trends and risk assessments that informed go/no-go decisions on two major releases.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="mono timeline-date">Mar 2024 - Oct 2024</span>
+            <span class="timeline-domain domain-saas">SaaS</span>
+          </div>
+          <div class="timeline-body">
+            <h3>Member Technical Staff - QA</h3>
+            <p class="timeline-company">Zoho Corporation <span class="muted">→ Trident</span></p>
+            <ul class="timeline-bullets">
+              <li>Maintained <strong>zero critical defect escapes</strong> across 6 consecutive releases of Trident (Emails, Chats, Notes, ToDo).</li>
+              <li>Introduced standardised test case templates that cut creation time by ~35% and eliminated cross-team discovery friction.</li>
+              <li>Used Zoho Apptics for production monitoring - catching 5 UX regressions post-release missed by automated checks.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="mono timeline-date">Aug 2020 - Feb 2024</span>
+            <span class="timeline-domain domain-eng">Engineering Simulation</span>
+          </div>
+          <div class="timeline-body">
+            <h3>Test Engineer</h3>
+            <p class="timeline-company">Modelon AB <span class="muted">→ Engineering Simulation</span></p>
+            <ul class="timeline-bullets">
+              <li>Built Modelon's first automation suite from zero - Cypress for web and Selenium + Cucumber for legacy - reaching <strong>60% coverage in 18 months</strong>.</li>
+              <li>Designed 300+ automated test cases for complex engineering workflows with Jenkins integration, cutting regression from 80 to 30 hours/release.</li>
+              <li>Built 80+ API test suites in Karate and Postman including contract tests that caught <strong>23 breaking API changes</strong> before production.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <div class="container">
+      <p class="section-label mono">Skills</p>
+      <h2 class="section-title">What I work with</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <p class="skill-group-label mono">Automation</p>
+          <div class="tags">
+            <span class="tag">Playwright</span>
+            <span class="tag">Cypress</span>
+            <span class="tag">Selenium WebDriver</span>
+            <span class="tag">Cucumber / BDD</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-label mono">Languages</p>
+          <div class="tags">
+            <span class="tag">JavaScript</span>
+            <span class="tag">TypeScript</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-label mono">API Testing</p>
+          <div class="tags">
+            <span class="tag">Postman</span>
+            <span class="tag">Karate</span>
+            <span class="tag">Axios</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-label mono">CI / CD</p>
+          <div class="tags">
+            <span class="tag">Jenkins</span>
+            <span class="tag">Codefresh</span>
+            <span class="tag">Git</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-label mono">Domains</p>
+          <div class="tags">
+            <span class="tag">Core Banking / BFSI</span>
+            <span class="tag">SaaS</span>
+            <span class="tag">Engineering Simulation</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-label mono">Methodologies</p>
+          <div class="tags">
+            <span class="tag">E2E</span>
+            <span class="tag">API Testing</span>
+            <span class="tag">Regression</span>
+            <span class="tag">Contract Testing</span>
+            <span class="tag">UAT</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section section-alt" id="projects">
+    <div class="container">
+      <p class="section-label mono">Projects</p>
+      <h2 class="section-title">Things I've built</h2>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-icon mono">[01]</span>
+            <div class="project-tags">
+              <span class="tag tag-sm">Cypress</span>
+              <span class="tag tag-sm">JavaScript</span>
+              <span class="tag tag-sm">E2E</span>
+            </div>
+          </div>
+          <h3>OrangeHRM Automation - Cypress</h3>
+          <p>End-to-end automation suite for OrangeHRM, an open-source HR management system. Covers user login, employee management, and core HR workflows using Cypress with modular test structure and custom commands.</p>
+          <a href="https://github.com/hasanazeerkhan/orangehrm-automation-cypress" target="_blank" class="project-link mono">→ orangehrm-automation-cypress</a>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-icon mono">[02]</span>
+            <div class="project-tags">
+              <span class="tag tag-sm">Karate</span>
+              <span class="tag tag-sm">Java</span>
+              <span class="tag tag-sm">API Testing</span>
+            </div>
+          </div>
+          <h3>API Testing - Karate Framework</h3>
+          <p>API test suite built with Karate using built-in Cucumber BDD steps. Covers REST endpoint validation, response schema checks, and data-driven scenarios - no separate assertion library needed.</p>
+          <a href="https://github.com/hasanazeerkhan/api-testing-karate" target="_blank" class="project-link mono">→ api-testing-karate</a>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-icon mono">[03]</span>
+            <div class="project-tags">
+              <span class="tag tag-sm">Selenium</span>
+              <span class="tag tag-sm">JavaScript</span>
+              <span class="tag tag-sm">WebDriver</span>
+            </div>
+          </div>
+          <h3>Selenium WebDriver - JS Test Suite</h3>
+          <p>Collection of automated tests for popular demo sites built with Selenium and JavaScript. Covers common scenarios: page navigation, element interaction, alert handling, and form automation - modular and reusable by design.</p>
+          <a href="https://github.com/hasanazeerkhan/selenium-javascript" target="_blank" class="project-link mono">→ selenium-javascript</a>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <span class="project-icon mono">[04]</span>
+            <div class="project-tags">
+              <span class="tag tag-sm">Selenium</span>
+              <span class="tag tag-sm">JavaScript</span>
+              <span class="tag tag-sm">Auth Flows</span>
+            </div>
+          </div>
+          <h3>Facebook Automation - Selenium JS</h3>
+          <p>Automates essential Facebook workflows - login, password recovery, account creation, and page management. Focused on validating auth flows and user management paths with reliability and cross-scenario coverage.</p>
+          <a href="https://github.com/hasanazeerkhan/facebook-automation-selenium-js" target="_blank" class="project-link mono">→ facebook-automation-selenium-js</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section class="section" id="awards">
+    <div class="container">
+      <p class="section-label mono">Recognition</p>
+      <h2 class="section-title">Awards</h2>
+      <div class="awards-list">
+        <div class="award-item">
+          <div class="award-left">
+            <span class="award-year mono">2025</span>
+            <span class="award-badge accent">Infosys</span>
+          </div>
+          <div class="award-right">
+            <h4>Insta Award for Innovation - Q4 2025</h4>
+            <p>Recognised for an AI-powered test optimisation framework that reduced manual QA effort by 30 hours/sprint on the ANZ banking platform.</p>
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="award-left">
+            <span class="award-year mono">2022</span>
+            <span class="award-badge">Modelon AB</span>
+          </div>
+          <div class="award-right">
+            <h4>Diploma of Innovation - 2022</h4>
+            <p>Awarded for architecting the Cypress automation framework - 0% to 60% coverage, regression cycle cut from 5 days to 2.</p>
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="award-left">
+            <span class="award-year mono">2022</span>
+            <span class="award-badge">Modelon AB</span>
+          </div>
+          <div class="award-right">
+            <h4>Diploma of Engagement - 2022</h4>
+            <p>Recognised for cross-functional collaboration with the Stockholm dev team, preventing 20+ design-level defects and delivering client demos to Fortune 500 stakeholders.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section-alt" id="contact">
+    <div class="container contact-container">
+      <p class="section-label mono">Contact</p>
+      <h2 class="section-title">Let's talk</h2>
+      <p class="contact-sub">Open to SDET and QA engineering roles where framework design and quality strategy are first-class concerns.</p>
+      <div class="contact-links">
+        <a href="mailto:hasanazeerkhan@gmail.com" class="contact-link">
+          <span class="mono">Email</span>
+          <span>hasanazeerkhan@gmail.com</span>
         </a>
-        <p style="font-size: 0.875rem; color: #8892b0;">PDF | Last Updated: February 2024</p>
+        <a href="https://linkedin.com/in/hasanazeerkhan" target="_blank" class="contact-link">
+          <span class="mono">LinkedIn</span>
+          <span>linkedin.com/in/hasanazeerkhan</span>
+        </a>
+        <a href="https://github.com/hasanazeerkhan" target="_blank" class="contact-link">
+          <span class="mono">GitHub</span>
+          <span>github.com/hasanazeerkhan</span>
+        </a>
+      </div>
     </div>
-</section>
-<script>
-    // Project filtering
-    const tagButtons = document.querySelectorAll('.tag-btn');
-    const projectCards = document.querySelectorAll('.projects-container .card');
+  </section>
 
-    tagButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Remove active class from all buttons
-            tagButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
-            button.classList.add('active');
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <span class="mono muted">Mohammed Hasan · SDET · 2025</span>
+    </div>
+  </footer>
 
-            const selectedTag = button.getAttribute('data-tag');
+  <script>// ─── Fade-in on scroll ────────────────────────────────
+const fadeTargets = document.querySelectorAll(
+  '.timeline-item, .project-card, .award-item, .skill-group, .about-grid, .hero-stat'
+);
 
-            projectCards.forEach(card => {
-                if (selectedTag === 'all') {
-                    card.style.display = 'block';
-                } else {
-                    const techStack = card.querySelector('.tech-stack');
-                    const hasTag = techStack.innerHTML.includes(selectedTag);
-                    card.style.display = hasTag ? 'block' : 'none';
-                }
-            });
-        });
+fadeTargets.forEach(el => el.classList.add('fade-in'));
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
     });
-</script>
+  },
+  { threshold: 0.08 }
+);
 
+fadeTargets.forEach(el => observer.observe(el));
+
+// ─── Active nav link on scroll ────────────────────────
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+const navObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.style.color = '';
+          if (link.getAttribute('href') === `#${entry.target.id}`) {
+            link.style.color = 'var(--accent)';
+          }
+        });
+      }
+    });
+  },
+  { threshold: 0.4 }
+);
+
+sections.forEach(s => navObserver.observe(s));
+</script>
+</body>
 </html>
